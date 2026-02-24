@@ -24,3 +24,6 @@ BugReports: https://github.com/WarwickCIM/osmtaggingr/issues
 Imports: 
     dplyr,
     WikipediR
+Depends: 
+    R (>= 2.10)
+LazyData: true
