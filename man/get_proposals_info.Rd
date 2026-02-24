@@ -4,10 +4,12 @@
 \alias{get_proposals_info}
 \title{Scrape stats from tagging proposals}
 \usage{
-get_proposals_info(urls)
+get_proposals_info(urls, verbose = FALSE)
 }
 \arguments{
 \item{urls}{a string containing the tagging proposal to retrieve details from.}
+
+\item{verbose}{a boolean to print the URL in the console.}
 }
 \value{
 a dataframe with some stats

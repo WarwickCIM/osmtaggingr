@@ -8,7 +8,7 @@ get_tagging_proposals(
   statuses = c("Rejected", "Approved", "Proposed"),
   details = TRUE,
   max_items = 5,
-  stats = FALSE,
+  info = TRUE,
   file = NULL
 )
 }
@@ -19,7 +19,7 @@ get_tagging_proposals(
 
 \item{max_items}{a integer specifiying the the maximum number of members to retrieve for each category. Set to 5 by default.}
 
-\item{stats}{a boolean. Specifies whether to retrieve or not proposals' stats. Set FALSE by default.}
+\item{info}{a boolean. Specifies whether to retrieve or not proposals' stats. Set TRUE by default.}
 
 \item{file}{a string containing the file path to store the dataset.}
 }
