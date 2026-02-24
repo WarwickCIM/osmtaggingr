@@ -5,7 +5,7 @@
 #' @param statuses a string or vector containing proposal's statuses to look for.
 #' @param details boolean. Specifies whether to retrieve or not pages' details.
 #' @param max_items a integer specifiying the the maximum number of members to retrieve for each category. Set to 5 by default.
-#' @param stats a boolean. Specifies whether to retrieve or not proposals' stats. Set FALSE by default.
+#' @param info a boolean. Specifies whether to retrieve or not proposals' stats. Set TRUE by default.
 #' @param file a string containing the file path to store the dataset.
 #'
 #' @returns a dataframe containing tagging proposals and associated metadata (see [`proposals`](proposals.html) for a description of its metadata).
@@ -19,7 +19,7 @@ get_tagging_proposals <- function(
   statuses = c("Rejected", "Approved", "Proposed"),
   details = TRUE,
   max_items = 5,
-  stats = FALSE,
+  info = TRUE,
   file = NULL
 ) {
   proposals_df <- data.frame(
@@ -112,46 +112,14 @@ get_tagging_proposals <- function(
     write.csv(proposals_df, file)
   }
 
-  return(proposals_df)
-}
+  proposals_df <- tibble::as_tibble(proposals_df)
 
+  if (info == TRUE) {
+    proposals_info <- get_proposals_info(proposals_df$fullurl)
 
-get_users_editing <- function(page_titles) {
-  df <- data.frame()
-
-  for (title in page_titles) {
-    print(title)
-
-    # Construct the API URL
-    api_url <- paste0(
-      "https://wiki.openstreetmap.org/w/api.php?action=query&prop=contributors&titles=",
-      URLencode(title, reserved = TRUE),
-      "&format=json"
-    )
-
-    # Query the API
-    data <- jsonlite::fromJSON(api_url)
-
-    # Extract contributors
-    pages <- data$query$pages
-    contributors <- NULL
-    for (page in pages) {
-      if (!is.null(page$contributors)) {
-        contributors <- page$contributors
-        break
-      }
-    }
-
-    # Convert to data frame
-    if (!is.null(contributors)) {
-      tmp_df <- as.data.frame(contributors)
-      tmp_df$page <- title
-    }
-
-    df <- rbind(tmp_df)
+    proposals_df <- proposals_df |>
+      dplyr::left_join(proposals_info, dplyr::join_by('fullurl' == 'url'))
   }
 
-  df <- tibble::as_tibble()(df)
-
-  return(df)
+  return(proposals_df)
 }

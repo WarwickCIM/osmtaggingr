@@ -16,6 +16,8 @@ a dataframe with some stats
 Given a vector of urls, scrapes the tagging proposals to retrieve statistics and stores them into a dataframe.
 }
 \examples{
-get_proposals_info('https://wiki.openstreetmap.org/wiki/Proposal:Electricity')
+proposals_info <- get_proposals_info('https://wiki.openstreetmap.org/wiki/Proposal:Electricity')
+
+proposals_info
 
 }
