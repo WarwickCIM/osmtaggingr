@@ -1,0 +1,75 @@
+# OpenStreetMap’s tagging datasets
+
+The goal of osmtaggingr is to generate datasets containing information
+about [OpenStreetMap](http://openstreetmap.org)’s tagging proposals.
+
+## Acknowledgements
+
+This is an output of the research project *[“Can digital goods be
+neutral? Evaluating OpenStreetMap’s equity through participatory data
+visualisation”](https://warwick.ac.uk/fac/cross_fac/cim/research/digital-good-neutrality-osm)*
+led by Carlos Cámara-Menoyo and Timothy Monteath and funded by the [ESRC
+Digital Good Network](https://digitalgood.net/) through their Digital
+Good Research Fund 2024-25.
+
+## Citing
+
+You are free to use and reuse this tool under the licence conditions.  
+If you use this package in your work, please cite it as below:
+
+> Cámara-Menoyo C, Monteath T (2026). OSMtaggingR: Creates
+> OpenStreetMap’s tagging Datasets. R package version 0.0.0.9000,
+> <https://github.com/WarwickCIM/OSMtaggingR>.
+
+``` bibtex
+@Manual{,
+  title = {OSMtaggingR: Creates OpenStreetMap's tagging Datasets},
+  author = {Carlos Cámara-Menoyo and Timothy Monteath},
+  year = {2026},
+  note = {R package version 0.0.0.9000},
+  url = {https://github.com/WarwickCIM/OSMtaggingR},
+}
+```
+
+## Installation
+
+You can install the development version of osmtaggingr from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("warwickcim/osmtaggingr")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library(osmtaggingr)
+## basic example code
+```
+
+What is special about using `README.Rmd` instead of just `README.md`?
+You can include R chunks like so:
+
+``` r
+summary(cars)
+#>      speed           dist       
+#>  Min.   : 4.0   Min.   :  2.00  
+#>  1st Qu.:12.0   1st Qu.: 26.00  
+#>  Median :15.0   Median : 36.00  
+#>  Mean   :15.4   Mean   : 42.98  
+#>  3rd Qu.:19.0   3rd Qu.: 56.00  
+#>  Max.   :25.0   Max.   :120.00
+```
+
+You’ll still need to render `README.Rmd` regularly, to keep `README.md`
+up-to-date. `devtools::build_readme()` is handy for this.
+
+You can also embed plots, for example:
+
+![](reference/figures/README-pressure-1.png)
+
+In that case, don’t forget to commit and push the resulting figure
+files, so they display on GitHub and CRAN.
