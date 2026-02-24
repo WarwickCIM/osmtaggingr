@@ -11,6 +11,7 @@ get_tagging_proposals(
   details = TRUE,
   max_items = 5,
   info = TRUE,
+  voting_summary = TRUE,
   file = NULL
 )
 ```
@@ -35,6 +36,11 @@ get_tagging_proposals(
   a boolean. Specifies whether to retrieve or not proposals' stats. Set
   TRUE by default.
 
+- voting_summary:
+
+  a boolean. Specifies whether to retrieve or not proposals' voting
+  summary. Set TRUE by default.
+
 - file:
 
   a string containing the file path to store the dataset.
@@ -50,7 +56,7 @@ for a description of its metadata).
 ``` r
 proposals <- get_tagging_proposals("Proposed")
 #> Scraping proposals ■■■■■■■■■■■■■                     40% | ETA:  5s
-#> Scraping proposals ■■■■■■■■■■■■■■■■■■■               60% | ETA:  6s
+#> Scraping proposals ■■■■■■■■■■■■■■■■■■■               60% | ETA:  7s
 #> Scraping proposals ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  4s
 #> Scraping proposals ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 head(proposals)

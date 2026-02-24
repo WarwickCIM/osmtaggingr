@@ -56,11 +56,17 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">voting_history</span> <span class="op">&lt;-</span> <span class="fu">get_voting_history</span><span class="op">(</span><span class="st">'https://wiki.openstreetmap.org/wiki/Proposal:Electricity'</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in get_voting_history("https://wiki.openstreetmap.org/wiki/Proposal:Electricity"):</span> could not find function "get_voting_history"</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">voting_summary</span> <span class="op">&lt;-</span> <span class="fu">get_voting_summary</span><span class="op">(</span><span class="st">'https://wiki.openstreetmap.org/wiki/Proposal:Electricity'</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">voting_history</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'voting_history' not found</span>
+<span class="r-in"><span><span class="va">voting_summary</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        url     proposal_status</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://wiki.openstreetmap.org/wiki/Proposal:Electricity Rejected (inactive)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           proposed_by                           tagging applies_to</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Privatemajory, Luke electricity=yes, no, intermittent        , ,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                              definition</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Indicate the electricity source used in a public building or amenity.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   statistics  rendered_as draft_started  rfc_start vote_start   vote_end</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            no rendering    2018-09-03 2020-10-15 2021-01-18 2021-02-01</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

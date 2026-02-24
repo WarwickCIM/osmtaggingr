@@ -11,7 +11,7 @@ proposals
 
 ## Format
 
-A data frame with 5 rows and 25 columns:
+A data frame with 5 rows and 34 columns:
 
 - id:
 
