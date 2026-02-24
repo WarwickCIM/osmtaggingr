@@ -1,7 +1,7 @@
 Package: osmtaggingr
 Title: OpenStreetMap's tagging datasets
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person(
       "Carlos", "Cámara-Menoyo", email = "carlos.camara@warwick.ac.uk", 
       role = c("aut", "cre"),
@@ -13,6 +13,7 @@ Authors@R:
       role = "aut",
       comment = c(ORCID = "0000-0003-2481-9785")
     )
+  )
 Description: Retrieves and stores data about OpenStreetMap tagging proposals.
 License: GPL (>= 3)
 Encoding: UTF-8
