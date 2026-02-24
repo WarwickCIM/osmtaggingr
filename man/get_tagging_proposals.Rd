@@ -8,6 +8,7 @@ get_tagging_proposals(
   statuses = c("Rejected", "Approved", "Proposed"),
   details = TRUE,
   max_items = 5,
+  stats = FALSE,
   file = NULL
 )
 }
@@ -18,13 +19,15 @@ get_tagging_proposals(
 
 \item{max_items}{a integer specifiying the the maximum number of members to retrieve for each category. Set to 5 by default.}
 
+\item{stats}{a boolean. Specifies whether to retrieve or not proposals' stats. Set FALSE by default.}
+
 \item{file}{a string containing the file path to store the dataset.}
 }
 \value{
-a dataframe containing tagging proposals and associated metadata (\code{title}, \code{sortkeyprefix}, \code{timestamp}, \code{status}, \code{int}, \code{ns}, \code{contentmodel}, \code{pagelanguage}, \code{pagelanguagehtmlcode}, \code{pagelanguagedir}, \code{touched}, \code{lastrevid}, \code{length}, \code{fullurl}, \code{editurl}, \code{canonicalurl}, \code{pageid}).
+a dataframe containing tagging proposals and associated metadata (see \href{proposals.html}{\code{proposals}} for a description of its metadata).
 }
 \description{
-This function retrieves all tagging proposals in OSM's wiki by querying mediawiki's API
+Retrieves all tagging proposals in OSM's wiki by querying mediawiki's API and provides basic metadata.
 }
 \examples{
 proposals <- get_tagging_proposals("Proposed")
