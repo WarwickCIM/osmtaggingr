@@ -7,7 +7,7 @@
 #' @param max_items a integer specifiying the the maximum number of members to retrieve for each category. Set to 5 by default.
 #' @param file a string containing the file path to store the dataset.
 #'
-#' @returns a dataframe containing tagging proposals and associated metadata.
+#' @returns a dataframe containing tagging proposals and associated metadata (`title`, `sortkeyprefix`, `timestamp`, `status`, `int`, `ns`, `contentmodel`, `pagelanguage`, `pagelanguagehtmlcode`, `pagelanguagedir`, `touched`, `lastrevid`, `length`, `fullurl`, `editurl`, `canonicalurl`, `pageid`).
 #' @export
 #'
 #' @examples 
@@ -77,7 +77,7 @@ get_tagging_proposals <- function(
       )
       
       if (length(tmp_info) != 0) {
-        tmp_info <- bind_rows(tmp_info[[1]])
+        tmp_info <- dplyr::bind_rows(tmp_info[[1]])
         
         # if ("touched" %in% colnames(tmp_info) == FALSE) {
         #   tmp_info$touched <- NA
@@ -98,7 +98,7 @@ get_tagging_proposals <- function(
         #                    canonicalurl)
         
         # info_df <- rbind(info_df, tmp_info)
-        info_df <- bind_rows(info_df, tmp_info)
+        info_df <- dplyr::bind_rows(info_df, tmp_info)
       }
       
       
