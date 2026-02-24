@@ -9,6 +9,7 @@ get_tagging_proposals(
   details = TRUE,
   max_items = 5,
   info = TRUE,
+  voting_summary = TRUE,
   file = NULL
 )
 }
@@ -20,6 +21,8 @@ get_tagging_proposals(
 \item{max_items}{a integer specifiying the the maximum number of members to retrieve for each category. Set to 5 by default.}
 
 \item{info}{a boolean. Specifies whether to retrieve or not proposals' stats. Set TRUE by default.}
+
+\item{voting_summary}{a boolean. Specifies whether to retrieve or not proposals' voting summary. Set TRUE by default.}
 
 \item{file}{a string containing the file path to store the dataset.}
 }

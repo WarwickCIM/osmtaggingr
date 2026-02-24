@@ -5,7 +5,7 @@
 \alias{proposals}
 \title{OSM Tagging Proposals}
 \format{
-A data frame with 5 rows and 25
+A data frame with 5 rows and 34
 columns:
 \describe{
 \item{id}{A unique identifier for every boundary}

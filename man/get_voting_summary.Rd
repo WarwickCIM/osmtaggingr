@@ -16,8 +16,8 @@ a dataframe with some stats
 Given a vector of urls, scrapes the tagging proposals to retrieve voting history data.
 }
 \examples{
-voting_history <- get_voting_history('https://wiki.openstreetmap.org/wiki/Proposal:Electricity')
+voting_summary <- get_voting_summary('https://wiki.openstreetmap.org/wiki/Proposal:Electricity')
 
-voting_history
+voting_summary
 
 }
