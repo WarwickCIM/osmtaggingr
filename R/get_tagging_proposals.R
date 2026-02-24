@@ -6,6 +6,7 @@
 #' @param details boolean. Specifies whether to retrieve or not pages' details.
 #' @param max_items a integer specifiying the the maximum number of members to retrieve for each category. Set to 5 by default.
 #' @param info a boolean. Specifies whether to retrieve or not proposals' stats. Set TRUE by default.
+#' @param voting_summary a boolean. Specifies whether to retrieve or not proposals' voting summary. Set TRUE by default.
 #' @param file a string containing the file path to store the dataset.
 #'
 #' @returns a dataframe containing tagging proposals and associated metadata (see [`proposals`](proposals.html) for a description of its metadata).
@@ -20,6 +21,7 @@ get_tagging_proposals <- function(
   details = TRUE,
   max_items = 5,
   info = TRUE,
+  voting_summary = TRUE,
   file = NULL
 ) {
   proposals_df <- data.frame(
@@ -119,6 +121,13 @@ get_tagging_proposals <- function(
 
     proposals_df <- proposals_df |>
       dplyr::left_join(proposals_info, dplyr::join_by('fullurl' == 'url'))
+  }
+
+  if (voting_summary == TRUE) {
+    voting_summary <- get_voting_summary(proposals_df$fullurl)
+
+    proposals_df <- proposals_df |>
+      dplyr::left_join(voting_summary, dplyr::join_by('fullurl' == 'url'))
   }
 
   return(proposals_df)

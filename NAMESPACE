@@ -2,3 +2,4 @@
 
 export(get_proposals_info)
 export(get_tagging_proposals)
+export(get_voting_summary)
