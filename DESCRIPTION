@@ -26,6 +26,10 @@ Imports:
     dplyr,
     httr,
     jsonlite,
+    lubridate,
+    rvest,
+    stringr,
+    tidyr,
     WikipediR
 Depends: 
     R (>= 2.10)
