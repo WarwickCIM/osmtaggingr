@@ -13,7 +13,7 @@
 #' @examples 
 #' proposals <- get_tagging_proposals("Proposed")
 #' head(proposals)
-#
+#' 
 get_tagging_proposals <- function(
     statuses = c("Rejected", "Approved", "Proposed"),
     details = TRUE,
