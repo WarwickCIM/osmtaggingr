@@ -21,7 +21,7 @@ get_tagging_proposals(
 \item{file}{a string containing the file path to store the dataset.}
 }
 \value{
-a dataframe containing tagging proposals and associated metadata.
+a dataframe containing tagging proposals and associated metadata (\code{title}, \code{sortkeyprefix}, \code{timestamp}, \code{status}, \code{int}, \code{ns}, \code{contentmodel}, \code{pagelanguage}, \code{pagelanguagehtmlcode}, \code{pagelanguagedir}, \code{touched}, \code{lastrevid}, \code{length}, \code{fullurl}, \code{editurl}, \code{canonicalurl}, \code{pageid}).
 }
 \description{
 This function retrieves all tagging proposals in OSM's wiki by querying mediawiki's API
@@ -29,4 +29,5 @@ This function retrieves all tagging proposals in OSM's wiki by querying mediawik
 \examples{
 proposals <- get_tagging_proposals("Proposed")
 head(proposals)
+
 }
