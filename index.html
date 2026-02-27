@@ -86,7 +86,64 @@ If you use this package in your work, please cite it as below:</p>
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/WarwickCIM/osmtaggingr" class="external-link">osmtaggingr</a></span><span class="op">)</span></span>
-<span><span class="co">## basic example code</span></span></code></pre></div>
+<span></span>
+<span><span class="co"># Load the built in datasets.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                           title                                sortkeyprefix</span></span>
+<span><span class="co">#&gt; 1          Proposal:Electricity                                "electricity"</span></span>
+<span><span class="co">#&gt; 2  Proposal:Motorcycle friendly "tag motorcycle_friendly" for accommodations</span></span>
+<span><span class="co">#&gt; 3 Proposal:Tramtrack on highway                       "Tramtrack on highway"</span></span>
+<span><span class="co">#&gt; 4       Proposal:Amenity=lounge                               Amenity=lounge</span></span>
+<span><span class="co">#&gt; 5      Proposal:Aquatics centre                              Aquatics centre</span></span>
+<span><span class="co">#&gt; 6        Approved features/2006                                         2006</span></span>
+<span><span class="co">#&gt;              timestamp   status int   ns contentmodel pagelanguage</span></span>
+<span><span class="co">#&gt; 1 2022-03-15T02:38:02Z Rejected  NA 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 2 2022-03-14T20:31:57Z Rejected  NA 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 3 2022-03-15T03:40:16Z Rejected  NA 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 4 2024-10-30T16:40:54Z Rejected  NA 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 5 2022-03-14T15:18:12Z Rejected  NA 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 6 2017-11-25T14:40:16Z Approved  NA    0     wikitext           en</span></span>
+<span><span class="co">#&gt;   pagelanguagehtmlcode pagelanguagedir              touched lastrevid length</span></span>
+<span><span class="co">#&gt; 1                   en             ltr 2026-02-22T18:10:16Z   2513631  69307</span></span>
+<span><span class="co">#&gt; 2                   en             ltr 2026-02-22T18:10:04Z   2515774  11731</span></span>
+<span><span class="co">#&gt; 3                   en             ltr 2026-02-03T18:31:06Z   2667855  12500</span></span>
+<span><span class="co">#&gt; 4                   en             ltr 2026-02-22T18:10:40Z   2771602  12681</span></span>
+<span><span class="co">#&gt; 5                   en             ltr 2026-02-03T18:31:06Z   2511978  14296</span></span>
+<span><span class="co">#&gt; 6                   en             ltr 2023-01-15T10:41:01Z   1555014   1429</span></span>
+<span><span class="co">#&gt;                                                             fullurl</span></span>
+<span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/wiki/Proposal:Electricity</span></span>
+<span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/wiki/Proposal:Motorcycle_friendly</span></span>
+<span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/wiki/Proposal:Tramtrack_on_highway</span></span>
+<span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/wiki/Proposal:Amenity%3Dlounge</span></span>
+<span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/wiki/Proposal:Aquatics_centre</span></span>
+<span><span class="co">#&gt; 6        https://wiki.openstreetmap.org/wiki/Approved_features/2006</span></span>
+<span><span class="co">#&gt;                                                                                      editurl</span></span>
+<span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/w/index.php?title=Proposal:Electricity&amp;action=edit</span></span>
+<span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/w/index.php?title=Proposal:Motorcycle_friendly&amp;action=edit</span></span>
+<span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/w/index.php?title=Proposal:Tramtrack_on_highway&amp;action=edit</span></span>
+<span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/w/index.php?title=Proposal:Amenity%3Dlounge&amp;action=edit</span></span>
+<span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/w/index.php?title=Proposal:Aquatics_centre&amp;action=edit</span></span>
+<span><span class="co">#&gt; 6        https://wiki.openstreetmap.org/w/index.php?title=Approved_features/2006&amp;action=edit</span></span>
+<span><span class="co">#&gt;                                                        canonicalurl pageid</span></span>
+<span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/wiki/Proposal:Electricity 205062</span></span>
+<span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/wiki/Proposal:Motorcycle_friendly 177232</span></span>
+<span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/wiki/Proposal:Tramtrack_on_highway 215012</span></span>
+<span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/wiki/Proposal:Amenity%3Dlounge 322252</span></span>
+<span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/wiki/Proposal:Aquatics_centre 154289</span></span>
+<span><span class="co">#&gt; 6        https://wiki.openstreetmap.org/wiki/Approved_features/2006  55725</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "title"                "sortkeyprefix"        "timestamp"           </span></span>
+<span><span class="co">#&gt;  [4] "status"               "int"                  "ns"                  </span></span>
+<span><span class="co">#&gt;  [7] "contentmodel"         "pagelanguage"         "pagelanguagehtmlcode"</span></span>
+<span><span class="co">#&gt; [10] "pagelanguagedir"      "touched"              "lastrevid"           </span></span>
+<span><span class="co">#&gt; [13] "length"               "fullurl"              "editurl"             </span></span>
+<span><span class="co">#&gt; [16] "canonicalurl"         "pageid"</span></span>
+<span></span>
+<span><span class="co"># Check the dataset's metadata</span></span>
+<span><span class="op">?</span><span class="va">proposals</span></span></code></pre></div>
 <p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
@@ -99,7 +156,7 @@ If you use this package in your work, please cite it as below:</p>
 <span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
 <p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this.</p>
 <p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
+<p><code>r pressure, echo = FALSE} plot(pressure)</code></p>
 <p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
 </div>
 </div>
