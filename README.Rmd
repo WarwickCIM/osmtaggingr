@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file and then run `build_readme()` to render with the latest version of the code.-->
+<!-- README.md is generated from README.Rmd. Please edit that file and then run `devtools::build_readme()` to render with the latest version of the code.-->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -60,7 +60,16 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(osmtaggingr)
-## basic example code
+
+# Load the built in datasets.
+data(proposals)
+
+head(proposals)
+
+colnames(proposals)
+
+# Check the dataset's metadata
+?proposals
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
@@ -73,7 +82,7 @@ You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-da
 
 You can also embed plots, for example:
 
-```{r pressure, echo = FALSE}
+```r pressure, echo = FALSE}
 plot(pressure)
 ```
 
