@@ -53,10 +53,14 @@ get_tagging_proposals <- function(
     rm(tmp_proposals)
   }
 
+  # Remove pages that are not proposals per se, but a collection of proposals grouped by year.
+  proposals_df = proposals_df |>
+    dplyr::filter(stringr::str_starts(title, "Approved", negate = TRUE))
+
   if (details == TRUE) {
     # Create empty dataframe
     info_df <- data.frame(
-      int = integer(),
+      # int = integer(),
       ns = integer(),
       title = character(),
       contentmodel = character(),
@@ -110,10 +114,6 @@ get_tagging_proposals <- function(
       dplyr::left_join(info_df, by = "title")
   }
 
-  if (!is.null(file)) {
-    write.csv(proposals_df, file)
-  }
-
   proposals_df <- tibble::as_tibble(proposals_df)
 
   if (info == TRUE) {
@@ -128,6 +128,10 @@ get_tagging_proposals <- function(
 
     proposals_df <- proposals_df |>
       dplyr::left_join(voting_summary, dplyr::join_by('fullurl' == 'url'))
+  }
+
+  if (!is.null(file)) {
+    write.csv(proposals_df, file)
   }
 
   return(proposals_df)
