@@ -50,7 +50,12 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of osmtaggingr is to generate datasets containing information about <a href="http://openstreetmap.org" class="external-link">OpenStreetMap</a>’s tagging proposals.</p>
+<p>The goal of <a href="https://github.com/WarwickCIM/osmtaggingr" class="external-link">osmtaggingr</a> is to provide reproducible datasets containing information about <a href="http://openstreetmap.org" class="external-link">OpenStreetMap</a>’s tagging proposals. It does so by querying and webscrapping OSM’s wiki via helper functions.</p>
+<p>The package contains the following:</p>
+<ol style="list-style-type: decimal">
+<li>Datasets (<code>proposals</code>) and associated metadata (see <code><a href="reference/proposals.html">?proposals</a></code>)</li>
+<li>Helper functions and description</li>
+</ol>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
 </h2>
@@ -90,6 +95,7 @@ If you use this package in your work, please cite it as below:</p>
 <span><span class="co"># Load the built in datasets.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Explore the dataset.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                           title                                sortkeyprefix</span></span>
 <span><span class="co">#&gt; 1          Proposal:Electricity                                "electricity"</span></span>
@@ -97,67 +103,99 @@ If you use this package in your work, please cite it as below:</p>
 <span><span class="co">#&gt; 3 Proposal:Tramtrack on highway                       "Tramtrack on highway"</span></span>
 <span><span class="co">#&gt; 4       Proposal:Amenity=lounge                               Amenity=lounge</span></span>
 <span><span class="co">#&gt; 5      Proposal:Aquatics centre                              Aquatics centre</span></span>
-<span><span class="co">#&gt; 6        Approved features/2006                                         2006</span></span>
-<span><span class="co">#&gt;              timestamp   status int   ns contentmodel pagelanguage</span></span>
-<span><span class="co">#&gt; 1 2022-03-15T02:38:02Z Rejected  NA 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 2 2022-03-14T20:31:57Z Rejected  NA 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 3 2022-03-15T03:40:16Z Rejected  NA 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 4 2024-10-30T16:40:54Z Rejected  NA 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 5 2022-03-14T15:18:12Z Rejected  NA 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 6 2017-11-25T14:40:16Z Approved  NA    0     wikitext           en</span></span>
+<span><span class="co">#&gt; 6     Proposal:3rd and 4th rail                             3rd and 4th rail</span></span>
+<span><span class="co">#&gt;              timestamp   status   ns contentmodel pagelanguage</span></span>
+<span><span class="co">#&gt; 1 2022-03-15T02:38:02Z Rejected 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 2 2022-03-14T20:31:57Z Rejected 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 3 2022-03-15T03:40:16Z Rejected 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 4 2024-10-30T16:40:54Z Rejected 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 5 2022-03-14T15:18:12Z Rejected 3000     wikitext           en</span></span>
+<span><span class="co">#&gt; 6 2022-07-21T11:13:48Z Approved 3000     wikitext           en</span></span>
 <span><span class="co">#&gt;   pagelanguagehtmlcode pagelanguagedir              touched lastrevid length</span></span>
 <span><span class="co">#&gt; 1                   en             ltr 2026-02-22T18:10:16Z   2513631  69307</span></span>
 <span><span class="co">#&gt; 2                   en             ltr 2026-02-22T18:10:04Z   2515774  11731</span></span>
 <span><span class="co">#&gt; 3                   en             ltr 2026-02-03T18:31:06Z   2667855  12500</span></span>
 <span><span class="co">#&gt; 4                   en             ltr 2026-02-22T18:10:40Z   2771602  12681</span></span>
 <span><span class="co">#&gt; 5                   en             ltr 2026-02-03T18:31:06Z   2511978  14296</span></span>
-<span><span class="co">#&gt; 6                   en             ltr 2023-01-15T10:41:01Z   1555014   1429</span></span>
+<span><span class="co">#&gt; 6                   en             ltr 2026-02-22T18:10:27Z   2511273   9553</span></span>
 <span><span class="co">#&gt;                                                             fullurl</span></span>
 <span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/wiki/Proposal:Electricity</span></span>
 <span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/wiki/Proposal:Motorcycle_friendly</span></span>
 <span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/wiki/Proposal:Tramtrack_on_highway</span></span>
 <span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/wiki/Proposal:Amenity%3Dlounge</span></span>
 <span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/wiki/Proposal:Aquatics_centre</span></span>
-<span><span class="co">#&gt; 6        https://wiki.openstreetmap.org/wiki/Approved_features/2006</span></span>
+<span><span class="co">#&gt; 6     https://wiki.openstreetmap.org/wiki/Proposal:3rd_and_4th_rail</span></span>
 <span><span class="co">#&gt;                                                                                      editurl</span></span>
 <span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/w/index.php?title=Proposal:Electricity&amp;action=edit</span></span>
 <span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/w/index.php?title=Proposal:Motorcycle_friendly&amp;action=edit</span></span>
 <span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/w/index.php?title=Proposal:Tramtrack_on_highway&amp;action=edit</span></span>
 <span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/w/index.php?title=Proposal:Amenity%3Dlounge&amp;action=edit</span></span>
 <span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/w/index.php?title=Proposal:Aquatics_centre&amp;action=edit</span></span>
-<span><span class="co">#&gt; 6        https://wiki.openstreetmap.org/w/index.php?title=Approved_features/2006&amp;action=edit</span></span>
+<span><span class="co">#&gt; 6     https://wiki.openstreetmap.org/w/index.php?title=Proposal:3rd_and_4th_rail&amp;action=edit</span></span>
 <span><span class="co">#&gt;                                                        canonicalurl pageid</span></span>
 <span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/wiki/Proposal:Electricity 205062</span></span>
 <span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/wiki/Proposal:Motorcycle_friendly 177232</span></span>
 <span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/wiki/Proposal:Tramtrack_on_highway 215012</span></span>
 <span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/wiki/Proposal:Amenity%3Dlounge 322252</span></span>
 <span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/wiki/Proposal:Aquatics_centre 154289</span></span>
-<span><span class="co">#&gt; 6        https://wiki.openstreetmap.org/wiki/Approved_features/2006  55725</span></span>
+<span><span class="co">#&gt; 6     https://wiki.openstreetmap.org/wiki/Proposal:3rd_and_4th_rail 252781</span></span>
+<span><span class="co">#&gt;    Page creator Date of page creation Latest editor Date of latest edit</span></span>
+<span><span class="co">#&gt; 1 Privatemajory   2018-09-03 15:51:00  TigerfellBot 2023-04-30 15:12:00</span></span>
+<span><span class="co">#&gt; 2          Rtfm   2017-01-10 12:50:00  TigerfellBot 2023-04-30 16:55:00</span></span>
+<span><span class="co">#&gt; 3     Tolstoi21   2018-11-01 11:48:00        Maro21 2024-02-21 20:31:00</span></span>
+<span><span class="co">#&gt; 4         Lega4   2024-10-07 13:49:00         Lega4 2024-10-30 16:40:00</span></span>
+<span><span class="co">#&gt; 5      Math1985   2015-12-25 19:42:00  TigerfellBot 2023-04-30 13:55:00</span></span>
+<span><span class="co">#&gt; 6       GazzerK   2020-06-07 11:09:00  TigerfellBot 2023-04-29 21:59:00</span></span>
+<span><span class="co">#&gt;   Total number of edits Total number of distinct authors</span></span>
+<span><span class="co">#&gt; 1                   220                               53</span></span>
+<span><span class="co">#&gt; 2                    65                               27</span></span>
+<span><span class="co">#&gt; 3                    50                               22</span></span>
+<span><span class="co">#&gt; 4                    27                               14</span></span>
+<span><span class="co">#&gt; 5                    77                               48</span></span>
+<span><span class="co">#&gt; 6                    68                               30</span></span>
+<span><span class="co">#&gt;   Recent number of edits (within past 90 days)</span></span>
+<span><span class="co">#&gt; 1                                            0</span></span>
+<span><span class="co">#&gt; 2                                            0</span></span>
+<span><span class="co">#&gt; 3                                            0</span></span>
+<span><span class="co">#&gt; 4                                            0</span></span>
+<span><span class="co">#&gt; 5                                            0</span></span>
+<span><span class="co">#&gt; 6                                            0</span></span>
+<span><span class="co">#&gt;   Recent number of distinct authors</span></span>
+<span><span class="co">#&gt; 1                                 0</span></span>
+<span><span class="co">#&gt; 2                                 0</span></span>
+<span><span class="co">#&gt; 3                                 0</span></span>
+<span><span class="co">#&gt; 4                                 0</span></span>
+<span><span class="co">#&gt; 5                                 0</span></span>
+<span><span class="co">#&gt; 6                                 0</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "title"                "sortkeyprefix"        "timestamp"           </span></span>
-<span><span class="co">#&gt;  [4] "status"               "int"                  "ns"                  </span></span>
-<span><span class="co">#&gt;  [7] "contentmodel"         "pagelanguage"         "pagelanguagehtmlcode"</span></span>
-<span><span class="co">#&gt; [10] "pagelanguagedir"      "touched"              "lastrevid"           </span></span>
-<span><span class="co">#&gt; [13] "length"               "fullurl"              "editurl"             </span></span>
-<span><span class="co">#&gt; [16] "canonicalurl"         "pageid"</span></span>
+<span><span class="co">#&gt;  [1] "title"                                       </span></span>
+<span><span class="co">#&gt;  [2] "sortkeyprefix"                               </span></span>
+<span><span class="co">#&gt;  [3] "timestamp"                                   </span></span>
+<span><span class="co">#&gt;  [4] "status"                                      </span></span>
+<span><span class="co">#&gt;  [5] "ns"                                          </span></span>
+<span><span class="co">#&gt;  [6] "contentmodel"                                </span></span>
+<span><span class="co">#&gt;  [7] "pagelanguage"                                </span></span>
+<span><span class="co">#&gt;  [8] "pagelanguagehtmlcode"                        </span></span>
+<span><span class="co">#&gt;  [9] "pagelanguagedir"                             </span></span>
+<span><span class="co">#&gt; [10] "touched"                                     </span></span>
+<span><span class="co">#&gt; [11] "lastrevid"                                   </span></span>
+<span><span class="co">#&gt; [12] "length"                                      </span></span>
+<span><span class="co">#&gt; [13] "fullurl"                                     </span></span>
+<span><span class="co">#&gt; [14] "editurl"                                     </span></span>
+<span><span class="co">#&gt; [15] "canonicalurl"                                </span></span>
+<span><span class="co">#&gt; [16] "pageid"                                      </span></span>
+<span><span class="co">#&gt; [17] "Page creator"                                </span></span>
+<span><span class="co">#&gt; [18] "Date of page creation"                       </span></span>
+<span><span class="co">#&gt; [19] "Latest editor"                               </span></span>
+<span><span class="co">#&gt; [20] "Date of latest edit"                         </span></span>
+<span><span class="co">#&gt; [21] "Total number of edits"                       </span></span>
+<span><span class="co">#&gt; [22] "Total number of distinct authors"            </span></span>
+<span><span class="co">#&gt; [23] "Recent number of edits (within past 90 days)"</span></span>
+<span><span class="co">#&gt; [24] "Recent number of distinct authors"</span></span>
 <span></span>
 <span><span class="co"># Check the dataset's metadata</span></span>
 <span><span class="op">?</span><span class="va">proposals</span></span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      speed           dist       </span></span>
-<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this.</p>
-<p>You can also embed plots, for example:</p>
-<p><code>r pressure, echo = FALSE} plot(pressure)</code></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

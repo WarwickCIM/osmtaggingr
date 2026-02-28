@@ -60,14 +60,14 @@ proposals <- get_tagging_proposals("Proposed")
 #> Scraping proposals ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  4s
 #> Scraping proposals ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 head(proposals)
-#> # A tibble: 5 × 34
-#>   title     sortkeyprefix timestamp status   int    ns contentmodel pagelanguage
-#>   <chr>     <chr>         <chr>     <chr>  <int> <int> <chr>        <chr>       
-#> 1 Proposal… 3D tagging f… 2025-09-… Propo…    NA  3000 wikitext     en          
-#> 2 Proposal… :note suffix  2022-07-… Propo…    NA  3000 wikitext     en          
-#> 3 Proposal… access_key    2024-10-… Propo…    NA  3000 wikitext     en          
-#> 4 Proposal… Add language… 2024-11-… Propo…    NA  3000 wikitext     en          
-#> 5 Proposal… addr:interpo… 2022-03-… Propo…    NA  3000 wikitext     en          
+#> # A tibble: 5 × 33
+#>   title           sortkeyprefix timestamp status    ns contentmodel pagelanguage
+#>   <chr>           <chr>         <chr>     <chr>  <int> <chr>        <chr>       
+#> 1 Proposal:3D ta… 3D tagging f… 2025-09-… Propo…  3000 wikitext     en          
+#> 2 Proposal:Note … :note suffix  2022-07-… Propo…  3000 wikitext     en          
+#> 3 Proposal:Acces… access_key    2024-10-… Propo…  3000 wikitext     en          
+#> 4 Proposal:Add l… Add language… 2024-11-… Propo…  3000 wikitext     en          
+#> 5 Proposal:Addr:… addr:interpo… 2022-03-… Propo…  3000 wikitext     en          
 #> # ℹ 26 more variables: pagelanguagehtmlcode <chr>, pagelanguagedir <chr>,
 #> #   touched <chr>, lastrevid <int>, length <int>, fullurl <chr>, editurl <chr>,
 #> #   canonicalurl <chr>, pageid <int>, `Page creator` <chr>,
