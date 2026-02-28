@@ -5,7 +5,7 @@
 \alias{proposals}
 \title{OSM Tagging Proposals}
 \format{
-A data frame with 5 rows and 34
+A data frame with 12 rows and 24
 columns:
 \describe{
 \item{id}{A unique identifier for every boundary}
@@ -21,7 +21,10 @@ columns:
 proposals
 }
 \description{
-Metadata tagging proposals in OSM Wiki ().
-This dataset has been created by the script {data-raw/tagging_proposals.R}
+Metadata tagging proposals in \href{https://wiki.openstreetmap.org}{OSM Wiki}.
+This dataset has been created by the script \code{data-raw/tagging_proposals.R}.
+}
+\details{
+This documentation is not yet complete: lacks all the final fields from the dataset.
 }
 \keyword{datasets}

@@ -1,6 +1,6 @@
 #' OSM Tagging Proposals
 #'
-#' Metadata tagging proposals in OSM Wiki ().
+#' Metadata tagging proposals in [OSM Wiki](https://wiki.openstreetmap.org).
 #' This dataset has been created by the script `data-raw/tagging_proposals.R`.
 #'
 #' This documentation is not yet complete: lacks all the final fields from the dataset.
