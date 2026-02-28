@@ -18,7 +18,12 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of osmtaggingr is to generate datasets containing information about [OpenStreetMap](http://openstreetmap.org)'s tagging proposals.
+The goal of `{osmtaggingr}` is to provide reproducible datasets containing information about [OpenStreetMap](http://openstreetmap.org)'s tagging proposals. It does so by querying and webscrapping OSM's wiki via helper functions. 
+
+The package contains the following:
+
+1. Datasets (`proposals`) and associated metadata (see `?proposals`)
+2. Helper functions and description
 
 
 ## Acknowledgements
@@ -64,6 +69,7 @@ library(osmtaggingr)
 # Load the built in datasets.
 data(proposals)
 
+# Explore the dataset.
 head(proposals)
 
 colnames(proposals)
@@ -72,18 +78,3 @@ colnames(proposals)
 ?proposals
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
