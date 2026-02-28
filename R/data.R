@@ -1,7 +1,9 @@
 #' OSM Tagging Proposals
 #'
 #' Metadata tagging proposals in OSM Wiki ().
-#' This dataset has been created by the script {data-raw/tagging_proposals.R}
+#' This dataset has been created by the script `data-raw/tagging_proposals.R`.
+#'
+#' This documentation is not yet complete: lacks all the final fields from the dataset.
 #'
 #' @format
 #' A data frame with `r nrow(proposals)` rows and `r ncol(proposals)`
