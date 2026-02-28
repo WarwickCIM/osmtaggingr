@@ -33,6 +33,7 @@ Imports:
     tidyr,
     WikipediR
 Suggests:
+    devtools,
     usethis
 Depends: 
     R (>= 3.5)
