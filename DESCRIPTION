@@ -31,6 +31,8 @@ Imports:
     stringr,
     tidyr,
     WikipediR
+Suggests:
+    usethis
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 LazyData: true
