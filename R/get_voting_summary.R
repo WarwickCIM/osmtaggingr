@@ -53,7 +53,6 @@ get_voting_summary <- function(urls) {
       df <- dplyr::bind_rows(df, result)
     }
     cli::cli_progress_update()
-    Sys.sleep(runif(1, min = 2, max = 10))
   }
 
   cli::cli_progress_done()
