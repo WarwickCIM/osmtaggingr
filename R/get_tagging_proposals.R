@@ -32,7 +32,15 @@ get_tagging_proposals <- function(
     status = character()
   )
 
+  cli::cli_h1("Retrieving proposals by status")
+
+  cli::cli_progress_bar("Retrieving proposals by status")
+
   for (status in statuses) {
+    cli::cli_text(paste("Retrieving", status, "proposals"))
+
+    cli::cli_progress_update()
+
     tmp_proposals <- WikipediR::pages_in_category(
       domain = "wiki.openstreetmap.org/",
       categories = paste0("Proposals with \"", status, "\" status"),
@@ -57,7 +65,15 @@ get_tagging_proposals <- function(
   proposals_df = proposals_df |>
     dplyr::filter(stringr::str_starts(title, "Approved", negate = TRUE))
 
+  total_proposals <- nrow(proposals_df)
+
+  cli::cli_alert_success("Retrieved {total_proposals} proposals.")
+
   if (details == TRUE) {
+    cli::cli_h1("Retrieving proposals' details")
+
+    cli::cli_progress_bar("Retrieving details", total = total_proposals)
+
     # Create empty dataframe
     info_df <- data.frame(
       # int = integer(),
@@ -107,14 +123,14 @@ get_tagging_proposals <- function(
         # info_df <- rbind(info_df, tmp_info)
         info_df <- dplyr::bind_rows(info_df, tmp_info)
       }
+
+      cli::cli_progress_update()
     }
 
     proposals_df <- proposals_df |>
       dplyr::select(-ns) |>
       dplyr::left_join(info_df, by = "title")
   }
-
-  proposals_df <- tibble::as_tibble(proposals_df)
 
   if (info == TRUE) {
     proposals_info <- get_proposals_info(proposals_df$fullurl)
@@ -124,6 +140,8 @@ get_tagging_proposals <- function(
   }
 
   if (voting_summary == TRUE) {
+    cli::cli_h1("Webscrapping proposals' voting summaries")
+
     voting_summary <- get_voting_summary(proposals_df$fullurl)
 
     proposals_df <- proposals_df |>
@@ -133,6 +151,8 @@ get_tagging_proposals <- function(
   if (!is.null(file)) {
     write.csv(proposals_df, file)
   }
+
+  proposals_df <- tibble::as_tibble(proposals_df)
 
   return(proposals_df)
 }
