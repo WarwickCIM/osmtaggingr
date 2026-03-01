@@ -31,56 +31,67 @@ get_proposals_info <- function(
 
     url_info <- paste0(url, "?action=info")
 
-    tables <- rvest::read_html(url_info) |>
-      rvest::html_elements("table") |>
-      rvest::html_table()
+    result <- tryCatch(
+      {
+        tables <- rvest::read_html(url_info) |>
+          rvest::html_elements("table") |>
+          rvest::html_table()
 
-    # Function to rearrange the date and time.
-    # Dates are stored as hh:mm, dmy, so we want to swap their values to be able to
-    # convert them to date format.
-    rearrange_datetime <- function(datetime_string) {
-      stringr::str_replace(
-        datetime_string,
-        "^([0-9]{2}:[0-9]{2}), (.+)$",
-        "\\2 \\1"
-      )
-    }
+        # Function to rearrange the date and time.
+        # Dates are stored as hh:mm, dmy, so we want to swap their values to be able to
+        # convert them to date format.
+        rearrange_datetime <- function(datetime_string) {
+          stringr::str_replace(
+            datetime_string,
+            "^([0-9]{2}:[0-9]{2}), (.+)$",
+            "\\2 \\1"
+          )
+        }
 
-    # Page info contains several tables. We are only interested in the third one,
-    # containing edit history.
-    table_edit_history <- tables[[3]] |>
-      dplyr::mutate(
-        X1 = stringr::str_to_lower(X1),
-        X1 = stringr::str_replace_all(X1, " ", "_")
-      ) |>
-      tidyr::pivot_wider(names_from = X1, values_from = X2) |>
-      dplyr::mutate(across(starts_with("date"), rearrange_datetime)) |>
-      dplyr::mutate(across(starts_with("date"), lubridate::dmy_hm)) |>
-      dplyr::mutate(
-        page_creator = stringr::str_remove_all(
-          page_creator,
-          ' \\(talk \\| contribs\\)'
-        ),
-      ) |>
-      dplyr::mutate(
-        latest_editor = stringr::str_remove_all(
-          latest_editor,
-          " \\(.*\\)"
-        )
-      ) |>
-      dplyr::mutate(url = url, .before = 1) |>
-      dplyr::mutate(
-        total_number_of_edits = as.numeric(total_number_of_edits),
-        total_number_of_distinct_authors = as.numeric(
-          total_number_of_distinct_authors
-        )
-      ) |>
-      dplyr::select(!dplyr::starts_with("recent"))
+        # Page info contains several tables. We are only interested in the third one,
+        # containing edit history.
+        table_edit_history <- tables[[3]] |>
+          dplyr::mutate(
+            X1 = stringr::str_to_lower(X1),
+            X1 = stringr::str_replace_all(X1, " ", "_")
+          ) |>
+          tidyr::pivot_wider(names_from = X1, values_from = X2) |>
+          dplyr::mutate(across(starts_with("date"), rearrange_datetime)) |>
+          dplyr::mutate(across(starts_with("date"), lubridate::dmy_hm)) |>
+          dplyr::mutate(
+            page_creator = stringr::str_remove_all(
+              page_creator,
+              ' \\(talk \\| contribs\\)'
+            ),
+          ) |>
+          dplyr::mutate(
+            latest_editor = stringr::str_remove_all(
+              latest_editor,
+              " \\(.*\\)"
+            )
+          ) |>
+          dplyr::mutate(url = url, .before = 1) |>
+          dplyr::mutate(
+            total_number_of_edits = as.numeric(total_number_of_edits),
+            total_number_of_distinct_authors = as.numeric(
+              total_number_of_distinct_authors
+            )
+          ) |>
+          dplyr::select(!dplyr::starts_with("recent"))
 
-    proposal_history <- table_edit_history
+        proposal_history <- table_edit_history
 
-    proposals_info <- proposals_info |>
-      dplyr::bind_rows(proposal_history)
+        proposals_info <- proposals_info |>
+          dplyr::bind_rows(proposal_history)
+      },
+      error = function(e) {
+        #message(sprintf("Could not scrape %s: %s", url, e$message))
+        cli::cli_alert_warning("Could not scrape {url}: {e$message}")
+        NULL
+      }
+    )
+
+    cli::cli_progress_update()
   }
 
   proposals_info = proposals_info |>
