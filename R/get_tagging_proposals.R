@@ -18,14 +18,12 @@
 #'
 get_tagging_proposals <- function(
   statuses = c("Rejected", "Approved", "Proposed"),
-  details = TRUE,
   max_items = 5,
   info = TRUE,
   voting_summary = TRUE,
   file = NULL
 ) {
   proposals_df <- data.frame(
-    ns = integer(),
     title = character(),
     sortkeyprefix = character(),
     timestamp = character(),
@@ -39,8 +37,6 @@ get_tagging_proposals <- function(
   for (status in statuses) {
     cli::cli_text(paste("Retrieving", status, "proposals"))
 
-    cli::cli_progress_update()
-
     tmp_proposals <- WikipediR::pages_in_category(
       domain = "wiki.openstreetmap.org/",
       categories = paste0("Proposals with \"", status, "\" status"),
@@ -53,12 +49,16 @@ get_tagging_proposals <- function(
     # Store proposal's statuses.
     tmp_proposals$status = status
 
-    # proposals.tmp <- bind_rows(proposals.tmp$query$categorymembers)
+    if ("ns" %in% colnames(tmp_proposals)) {
+      tmp_proposals <- dplyr::select(tmp_proposals, -ns)
+    }
 
     proposals_df = rbind(proposals_df, tmp_proposals)
 
     # Some cleanup!
     rm(tmp_proposals)
+
+    cli::cli_progress_update()
   }
 
   # Remove pages that are not proposals per se, but a collection of proposals grouped by year.
@@ -69,68 +69,86 @@ get_tagging_proposals <- function(
 
   cli::cli_alert_success("Retrieved {total_proposals} proposals.")
 
-  if (details == TRUE) {
-    cli::cli_h1("Retrieving proposals' details")
+  ## Retrieve details -----------------
+  # The previous just provides very basic info: title, sortkeyprefix and timestamp. We need to query
+  # each page to get their details.
 
-    cli::cli_progress_bar("Retrieving details", total = total_proposals)
+  cli::cli_h1("Retrieving proposals' details")
 
-    # Create empty dataframe
-    info_df <- data.frame(
-      # int = integer(),
-      ns = integer(),
-      title = character(),
-      contentmodel = character(),
-      pagelanguage = character(),
-      pagelanguagehtmlcode = character(),
-      pagelanguagedir = character(),
-      touched = character(),
-      lastrevid = integer(),
-      length = integer(),
-      fullurl = character(),
-      editurl = character(),
-      canonicalurl = character()
+  cli::cli_progress_bar("Retrieving details", total = total_proposals)
+
+  # Create empty dataframe
+  info_df <- data.frame(
+    title = character(),
+    contentmodel = character(),
+    pagelanguage = character(),
+    pagelanguagehtmlcode = character(),
+    pagelanguagedir = character(),
+    touched = character(),
+    lastrevid = integer(),
+    length = integer(),
+    fullurl = character(),
+    editurl = character(),
+    canonicalurl = character()
+  )
+
+  for (i in 1:nrow(proposals_df)) {
+    tmp_info <- WikipediR::page_info(
+      domain = "wiki.openstreetmap.org/",
+      page = proposals_df$title[i],
+      properties = c("url"),
+      clean_response = TRUE
     )
 
-    for (i in 1:nrow(proposals_df)) {
-      tmp_info <- WikipediR::page_info(
-        domain = "wiki.openstreetmap.org/",
-        page = proposals_df$title[i],
-        properties = c("url"),
-        clean_response = TRUE
-      )
+    if (length(tmp_info) != 0) {
+      tmp_info <- dplyr::bind_rows(tmp_info[[1]])
 
-      if (length(tmp_info) != 0) {
-        tmp_info <- dplyr::bind_rows(tmp_info[[1]])
+      # if ("touched" %in% colnames(tmp_info) == FALSE) {
+      #   tmp_info$touched <- NA
+      # }
+      #
+      # tmp_info <- select(tmp_info,
+      #                    # int,
+      #                    ns, title,
+      #                    contentmodel,
+      #                    pagelanguage,
+      #                    pagelanguagehtmlcode,
+      #                    pagelanguagedir,
+      #                    touched,
+      #                    lastrevid,
+      #                    length,
+      #                    fullurl,
+      #                    editurl,
+      #                    canonicalurl)
 
-        # if ("touched" %in% colnames(tmp_info) == FALSE) {
-        #   tmp_info$touched <- NA
-        # }
-        #
-        # tmp_info <- select(tmp_info,
-        #                    # int,
-        #                    ns, title,
-        #                    contentmodel,
-        #                    pagelanguage,
-        #                    pagelanguagehtmlcode,
-        #                    pagelanguagedir,
-        #                    touched,
-        #                    lastrevid,
-        #                    length,
-        #                    fullurl,
-        #                    editurl,
-        #                    canonicalurl)
-
-        # info_df <- rbind(info_df, tmp_info)
-        info_df <- dplyr::bind_rows(info_df, tmp_info)
-      }
-
-      cli::cli_progress_update()
+      # info_df <- rbind(info_df, tmp_info)
+      info_df <- dplyr::bind_rows(info_df, tmp_info)
     }
 
-    proposals_df <- proposals_df |>
-      dplyr::select(-ns) |>
-      dplyr::left_join(info_df, by = "title")
+    cli::cli_progress_update()
   }
+
+  proposals_df <- proposals_df |>
+    dplyr::left_join(info_df, by = "title") |>
+    dplyr::select(
+      status,
+      title,
+      sortkeyprefix,
+      timestamp,
+      pagelanguage,
+      touched,
+      length,
+      fullurl,
+      editurl,
+      pageid
+    ) |>
+    dplyr::mutate(
+      timestamp = lubridate::ymd_hms(timestamp),
+      pagelanguage = as.factor(pagelanguage),
+      touched = lubridate::ymd_hms(touched)
+    )
+
+  cli::cli_alert_success("Retrieved details to {total_proposals} proposals.")
 
   if (info == TRUE) {
     proposals_info <- get_proposals_info(proposals_df$fullurl)
@@ -140,8 +158,6 @@ get_tagging_proposals <- function(
   }
 
   if (voting_summary == TRUE) {
-    cli::cli_h1("Webscrapping proposals' voting summaries")
-
     voting_summary <- get_voting_summary(proposals_df$fullurl)
 
     proposals_df <- proposals_df |>

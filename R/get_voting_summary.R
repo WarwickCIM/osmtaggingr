@@ -13,7 +13,10 @@
 #' voting_summary
 #'
 get_voting_summary <- function(urls) {
-  cli::cli_progress_bar("Scraping proposals", total = length(urls))
+  cli::cli_h1("Retrieving proposals' voting summaries")
+
+  cli::cli_progress_bar("Webscraping", total = length(urls))
+
   df <- data.frame()
 
   for (url in urls) {
@@ -55,6 +58,16 @@ get_voting_summary <- function(urls) {
     cli::cli_progress_update()
   }
 
+  df <- df |>
+    dplyr::mutate(
+      proposal_status = as.factor(proposal_status),
+      proposed_by = as.factor(proposed_by),
+      applies_to = as.factor(applies_to),
+      draft_started = lubridate::ymd(draft_started),
+      rfc_start = lubridate::ymd(rfc_start),
+      vote_start = lubridate::ymd(vote_start),
+      vote_end = lubridate::ymd(vote_end)
+    )
   cli::cli_progress_done()
   return(df)
 }
