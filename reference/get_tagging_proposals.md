@@ -56,7 +56,7 @@ for a description of its metadata).
 ``` r
 proposals <- get_tagging_proposals("Proposed")
 #> Scraping proposals ■■■■■■■■■■■■■                     40% | ETA:  5s
-#> Scraping proposals ■■■■■■■■■■■■■■■■■■■               60% | ETA:  7s
+#> Scraping proposals ■■■■■■■■■■■■■■■■■■■               60% | ETA:  6s
 #> Scraping proposals ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  4s
 #> Scraping proposals ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 head(proposals)

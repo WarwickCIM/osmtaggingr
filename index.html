@@ -95,78 +95,27 @@ If you use this package in your work, please cite it as below:</p>
 <span><span class="co"># Load the built in datasets.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Converting to tibble for better representation.</span></span>
+<span><span class="va">proposals</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
+<span></span>
 <span><span class="co"># Explore the dataset.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                           title                                sortkeyprefix</span></span>
-<span><span class="co">#&gt; 1          Proposal:Electricity                                "electricity"</span></span>
-<span><span class="co">#&gt; 2  Proposal:Motorcycle friendly "tag motorcycle_friendly" for accommodations</span></span>
-<span><span class="co">#&gt; 3 Proposal:Tramtrack on highway                       "Tramtrack on highway"</span></span>
-<span><span class="co">#&gt; 4       Proposal:Amenity=lounge                               Amenity=lounge</span></span>
-<span><span class="co">#&gt; 5      Proposal:Aquatics centre                              Aquatics centre</span></span>
-<span><span class="co">#&gt; 6     Proposal:3rd and 4th rail                             3rd and 4th rail</span></span>
-<span><span class="co">#&gt;              timestamp   status   ns contentmodel pagelanguage</span></span>
-<span><span class="co">#&gt; 1 2022-03-15T02:38:02Z Rejected 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 2 2022-03-14T20:31:57Z Rejected 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 3 2022-03-15T03:40:16Z Rejected 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 4 2024-10-30T16:40:54Z Rejected 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 5 2022-03-14T15:18:12Z Rejected 3000     wikitext           en</span></span>
-<span><span class="co">#&gt; 6 2022-07-21T11:13:48Z Approved 3000     wikitext           en</span></span>
-<span><span class="co">#&gt;   pagelanguagehtmlcode pagelanguagedir              touched lastrevid length</span></span>
-<span><span class="co">#&gt; 1                   en             ltr 2026-02-22T18:10:16Z   2513631  69307</span></span>
-<span><span class="co">#&gt; 2                   en             ltr 2026-02-22T18:10:04Z   2515774  11731</span></span>
-<span><span class="co">#&gt; 3                   en             ltr 2026-02-03T18:31:06Z   2667855  12500</span></span>
-<span><span class="co">#&gt; 4                   en             ltr 2026-02-22T18:10:40Z   2771602  12681</span></span>
-<span><span class="co">#&gt; 5                   en             ltr 2026-02-03T18:31:06Z   2511978  14296</span></span>
-<span><span class="co">#&gt; 6                   en             ltr 2026-02-22T18:10:27Z   2511273   9553</span></span>
-<span><span class="co">#&gt;                                                             fullurl</span></span>
-<span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/wiki/Proposal:Electricity</span></span>
-<span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/wiki/Proposal:Motorcycle_friendly</span></span>
-<span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/wiki/Proposal:Tramtrack_on_highway</span></span>
-<span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/wiki/Proposal:Amenity%3Dlounge</span></span>
-<span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/wiki/Proposal:Aquatics_centre</span></span>
-<span><span class="co">#&gt; 6     https://wiki.openstreetmap.org/wiki/Proposal:3rd_and_4th_rail</span></span>
-<span><span class="co">#&gt;                                                                                      editurl</span></span>
-<span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/w/index.php?title=Proposal:Electricity&amp;action=edit</span></span>
-<span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/w/index.php?title=Proposal:Motorcycle_friendly&amp;action=edit</span></span>
-<span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/w/index.php?title=Proposal:Tramtrack_on_highway&amp;action=edit</span></span>
-<span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/w/index.php?title=Proposal:Amenity%3Dlounge&amp;action=edit</span></span>
-<span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/w/index.php?title=Proposal:Aquatics_centre&amp;action=edit</span></span>
-<span><span class="co">#&gt; 6     https://wiki.openstreetmap.org/w/index.php?title=Proposal:3rd_and_4th_rail&amp;action=edit</span></span>
-<span><span class="co">#&gt;                                                        canonicalurl pageid</span></span>
-<span><span class="co">#&gt; 1          https://wiki.openstreetmap.org/wiki/Proposal:Electricity 205062</span></span>
-<span><span class="co">#&gt; 2  https://wiki.openstreetmap.org/wiki/Proposal:Motorcycle_friendly 177232</span></span>
-<span><span class="co">#&gt; 3 https://wiki.openstreetmap.org/wiki/Proposal:Tramtrack_on_highway 215012</span></span>
-<span><span class="co">#&gt; 4     https://wiki.openstreetmap.org/wiki/Proposal:Amenity%3Dlounge 322252</span></span>
-<span><span class="co">#&gt; 5      https://wiki.openstreetmap.org/wiki/Proposal:Aquatics_centre 154289</span></span>
-<span><span class="co">#&gt; 6     https://wiki.openstreetmap.org/wiki/Proposal:3rd_and_4th_rail 252781</span></span>
-<span><span class="co">#&gt;    Page creator Date of page creation Latest editor Date of latest edit</span></span>
-<span><span class="co">#&gt; 1 Privatemajory   2018-09-03 15:51:00  TigerfellBot 2023-04-30 15:12:00</span></span>
-<span><span class="co">#&gt; 2          Rtfm   2017-01-10 12:50:00  TigerfellBot 2023-04-30 16:55:00</span></span>
-<span><span class="co">#&gt; 3     Tolstoi21   2018-11-01 11:48:00        Maro21 2024-02-21 20:31:00</span></span>
-<span><span class="co">#&gt; 4         Lega4   2024-10-07 13:49:00         Lega4 2024-10-30 16:40:00</span></span>
-<span><span class="co">#&gt; 5      Math1985   2015-12-25 19:42:00  TigerfellBot 2023-04-30 13:55:00</span></span>
-<span><span class="co">#&gt; 6       GazzerK   2020-06-07 11:09:00  TigerfellBot 2023-04-29 21:59:00</span></span>
-<span><span class="co">#&gt;   Total number of edits Total number of distinct authors</span></span>
-<span><span class="co">#&gt; 1                   220                               53</span></span>
-<span><span class="co">#&gt; 2                    65                               27</span></span>
-<span><span class="co">#&gt; 3                    50                               22</span></span>
-<span><span class="co">#&gt; 4                    27                               14</span></span>
-<span><span class="co">#&gt; 5                    77                               48</span></span>
-<span><span class="co">#&gt; 6                    68                               30</span></span>
-<span><span class="co">#&gt;   Recent number of edits (within past 90 days)</span></span>
-<span><span class="co">#&gt; 1                                            0</span></span>
-<span><span class="co">#&gt; 2                                            0</span></span>
-<span><span class="co">#&gt; 3                                            0</span></span>
-<span><span class="co">#&gt; 4                                            0</span></span>
-<span><span class="co">#&gt; 5                                            0</span></span>
-<span><span class="co">#&gt; 6                                            0</span></span>
-<span><span class="co">#&gt;   Recent number of distinct authors</span></span>
-<span><span class="co">#&gt; 1                                 0</span></span>
-<span><span class="co">#&gt; 2                                 0</span></span>
-<span><span class="co">#&gt; 3                                 0</span></span>
-<span><span class="co">#&gt; 4                                 0</span></span>
-<span><span class="co">#&gt; 5                                 0</span></span>
-<span><span class="co">#&gt; 6                                 0</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 24</span></span>
+<span><span class="co">#&gt;   title           sortkeyprefix timestamp status    ns contentmodel pagelanguage</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;       </span></span>
+<span><span class="co">#&gt; 1 Proposal:Elect… "\"electrici… 2022-03-… Rejec…  3000 wikitext     en          </span></span>
+<span><span class="co">#&gt; 2 Proposal:Motor… "\"tag motor… 2022-03-… Rejec…  3000 wikitext     en          </span></span>
+<span><span class="co">#&gt; 3 Proposal:Tramt… "\"Tramtrack… 2022-03-… Rejec…  3000 wikitext     en          </span></span>
+<span><span class="co">#&gt; 4 Proposal:Ameni… "Amenity=lou… 2024-10-… Rejec…  3000 wikitext     en          </span></span>
+<span><span class="co">#&gt; 5 Proposal:Aquat… "Aquatics ce… 2022-03-… Rejec…  3000 wikitext     en          </span></span>
+<span><span class="co">#&gt; 6 Proposal:3rd a… "3rd and 4th… 2022-07-… Appro…  3000 wikitext     en          </span></span>
+<span><span class="co">#&gt; # ℹ 17 more variables: pagelanguagehtmlcode &lt;chr&gt;, pagelanguagedir &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   touched &lt;chr&gt;, lastrevid &lt;int&gt;, length &lt;int&gt;, fullurl &lt;chr&gt;, editurl &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   canonicalurl &lt;chr&gt;, pageid &lt;int&gt;, `Page creator` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `Date of page creation` &lt;dttm&gt;, `Latest editor` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `Date of latest edit` &lt;dttm&gt;, `Total number of edits` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `Total number of distinct authors` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `Recent number of edits (within past 90 days)` &lt;chr&gt;, …</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "title"                                       </span></span>
