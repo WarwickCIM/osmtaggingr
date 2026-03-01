@@ -25,8 +25,29 @@ get_voting_summary <- function(urls) {
       {
         page <- rvest::read_html(url)
         vcard_tbl <- page |>
-          rvest::html_element(".vcard") |>
+          rvest::html_elements(".vcard") |>
           rvest::html_table()
+
+        # Remove vcard that points to the feature page, if any.
+        remove_feature_page <- function(
+          lst,
+          pattern = "The Feature Page for the",
+          ignore.case = FALSE
+        ) {
+          idx <- vapply(
+            lst,
+            function(x) {
+              txt <- paste(unlist(lapply(x, as.character)), collapse = " ")
+              grepl(pattern, txt, fixed = TRUE, ignore.case = ignore.case)
+            },
+            logical(1)
+          )
+          lst[!idx]
+        }
+
+        # usage
+        vcard_tbl <- remove_feature_page(vcard_tbl)
+        vcard_tbl <- vcard_tbl[[1]]
 
         # Check if html_table returned a data.frame
         if (!is.data.frame(vcard_tbl)) {
@@ -46,7 +67,7 @@ get_voting_summary <- function(urls) {
         vcard
       },
       error = function(e) {
-        message(sprintf("Could not scrape %s: %s", url, e$message))
+        message(sprintf("Could not scrape %s : %s", url, e$message))
         NULL
       }
     )
@@ -67,7 +88,22 @@ get_voting_summary <- function(urls) {
       rfc_start = lubridate::ymd(rfc_start),
       vote_start = lubridate::ymd(vote_start),
       vote_end = lubridate::ymd(vote_end)
-    )
+    ) |>
+    dplyr::select(dplyr::any_of(c(
+      "url",
+      "proposal_status",
+      "proposed_by",
+      "tagging",
+      "applies_to",
+      "definition",
+      "statistics",
+      "rendered_as",
+      "draft_started",
+      "rfc_start",
+      "vote_start",
+      "vote_end"
+    )))
+
   cli::cli_progress_done()
   return(df)
 }
