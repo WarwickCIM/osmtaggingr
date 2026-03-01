@@ -100,48 +100,38 @@ If you use this package in your work, please cite it as below:</p>
 <span></span>
 <span><span class="co"># Explore the dataset.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 24</span></span>
-<span><span class="co">#&gt;   title           sortkeyprefix timestamp status    ns contentmodel pagelanguage</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;       </span></span>
-<span><span class="co">#&gt; 1 Proposal:Elect… "\"electrici… 2022-03-… Rejec…  3000 wikitext     en          </span></span>
-<span><span class="co">#&gt; 2 Proposal:Motor… "\"tag motor… 2022-03-… Rejec…  3000 wikitext     en          </span></span>
-<span><span class="co">#&gt; 3 Proposal:Tramt… "\"Tramtrack… 2022-03-… Rejec…  3000 wikitext     en          </span></span>
-<span><span class="co">#&gt; 4 Proposal:Ameni… "Amenity=lou… 2024-10-… Rejec…  3000 wikitext     en          </span></span>
-<span><span class="co">#&gt; 5 Proposal:Aquat… "Aquatics ce… 2022-03-… Rejec…  3000 wikitext     en          </span></span>
-<span><span class="co">#&gt; 6 Proposal:3rd a… "3rd and 4th… 2022-07-… Appro…  3000 wikitext     en          </span></span>
-<span><span class="co">#&gt; # ℹ 17 more variables: pagelanguagehtmlcode &lt;chr&gt;, pagelanguagedir &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   touched &lt;chr&gt;, lastrevid &lt;int&gt;, length &lt;int&gt;, fullurl &lt;chr&gt;, editurl &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   canonicalurl &lt;chr&gt;, pageid &lt;int&gt;, `Page creator` &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   `Date of page creation` &lt;dttm&gt;, `Latest editor` &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   `Date of latest edit` &lt;dttm&gt;, `Total number of edits` &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   `Total number of distinct authors` &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   `Recent number of edits (within past 90 days)` &lt;chr&gt;, …</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 27</span></span>
+<span><span class="co">#&gt;   status   title                  sortkeyprefix timestamp           pagelanguage</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                  &lt;chr&gt;         &lt;dttm&gt;              &lt;fct&gt;       </span></span>
+<span><span class="co">#&gt; 1 Rejected Proposal:Electricity   "\"electrici… 2022-03-15 02:38:02 en          </span></span>
+<span><span class="co">#&gt; 2 Rejected Proposal:Motorcycle f… "\"tag motor… 2022-03-14 20:31:57 en          </span></span>
+<span><span class="co">#&gt; 3 Rejected Proposal:Tramtrack on… "\"Tramtrack… 2022-03-15 03:40:16 en          </span></span>
+<span><span class="co">#&gt; 4 Rejected Proposal:Amenity=loun… "Amenity=lou… 2024-10-30 16:40:54 en          </span></span>
+<span><span class="co">#&gt; 5 Rejected Proposal:Aquatics cen… "Aquatics ce… 2022-03-14 15:18:12 en          </span></span>
+<span><span class="co">#&gt; 6 Rejected Proposal:Artwork type… "artwork typ… 2022-03-15 22:24:41 en          </span></span>
+<span><span class="co">#&gt; # ℹ 22 more variables: touched &lt;dttm&gt;, length &lt;int&gt;, fullurl &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   editurl &lt;chr&gt;, pageid &lt;int&gt;, page_creator &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   date_of_page_creation &lt;dttm&gt;, latest_editor &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   date_of_latest_edit &lt;dttm&gt;, total_number_of_edits &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   total_number_of_distinct_authors &lt;dbl&gt;, proposal_status &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   proposed_by &lt;fct&gt;, tagging &lt;chr&gt;, applies_to &lt;fct&gt;, definition &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   statistics &lt;chr&gt;, rendered_as &lt;chr&gt;, draft_started &lt;date&gt;, …</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "title"                                       </span></span>
-<span><span class="co">#&gt;  [2] "sortkeyprefix"                               </span></span>
-<span><span class="co">#&gt;  [3] "timestamp"                                   </span></span>
-<span><span class="co">#&gt;  [4] "status"                                      </span></span>
-<span><span class="co">#&gt;  [5] "ns"                                          </span></span>
-<span><span class="co">#&gt;  [6] "contentmodel"                                </span></span>
-<span><span class="co">#&gt;  [7] "pagelanguage"                                </span></span>
-<span><span class="co">#&gt;  [8] "pagelanguagehtmlcode"                        </span></span>
-<span><span class="co">#&gt;  [9] "pagelanguagedir"                             </span></span>
-<span><span class="co">#&gt; [10] "touched"                                     </span></span>
-<span><span class="co">#&gt; [11] "lastrevid"                                   </span></span>
-<span><span class="co">#&gt; [12] "length"                                      </span></span>
-<span><span class="co">#&gt; [13] "fullurl"                                     </span></span>
-<span><span class="co">#&gt; [14] "editurl"                                     </span></span>
-<span><span class="co">#&gt; [15] "canonicalurl"                                </span></span>
-<span><span class="co">#&gt; [16] "pageid"                                      </span></span>
-<span><span class="co">#&gt; [17] "Page creator"                                </span></span>
-<span><span class="co">#&gt; [18] "Date of page creation"                       </span></span>
-<span><span class="co">#&gt; [19] "Latest editor"                               </span></span>
-<span><span class="co">#&gt; [20] "Date of latest edit"                         </span></span>
-<span><span class="co">#&gt; [21] "Total number of edits"                       </span></span>
-<span><span class="co">#&gt; [22] "Total number of distinct authors"            </span></span>
-<span><span class="co">#&gt; [23] "Recent number of edits (within past 90 days)"</span></span>
-<span><span class="co">#&gt; [24] "Recent number of distinct authors"</span></span>
+<span><span class="co">#&gt;  [1] "status"                           "title"                           </span></span>
+<span><span class="co">#&gt;  [3] "sortkeyprefix"                    "timestamp"                       </span></span>
+<span><span class="co">#&gt;  [5] "pagelanguage"                     "touched"                         </span></span>
+<span><span class="co">#&gt;  [7] "length"                           "fullurl"                         </span></span>
+<span><span class="co">#&gt;  [9] "editurl"                          "pageid"                          </span></span>
+<span><span class="co">#&gt; [11] "page_creator"                     "date_of_page_creation"           </span></span>
+<span><span class="co">#&gt; [13] "latest_editor"                    "date_of_latest_edit"             </span></span>
+<span><span class="co">#&gt; [15] "total_number_of_edits"            "total_number_of_distinct_authors"</span></span>
+<span><span class="co">#&gt; [17] "proposal_status"                  "proposed_by"                     </span></span>
+<span><span class="co">#&gt; [19] "tagging"                          "applies_to"                      </span></span>
+<span><span class="co">#&gt; [21] "definition"                       "statistics"                      </span></span>
+<span><span class="co">#&gt; [23] "rendered_as"                      "draft_started"                   </span></span>
+<span><span class="co">#&gt; [25] "rfc_start"                        "vote_start"                      </span></span>
+<span><span class="co">#&gt; [27] "vote_end"</span></span>
 <span></span>
 <span><span class="co"># Check the dataset's metadata</span></span>
 <span><span class="op">?</span><span class="va">proposals</span></span></code></pre></div>

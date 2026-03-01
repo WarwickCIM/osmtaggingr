@@ -64,48 +64,38 @@ proposals <- tibble::as_tibble(proposals)
 
 # Explore the dataset.
 head(proposals)
-#> # A tibble: 6 × 24
-#>   title           sortkeyprefix timestamp status    ns contentmodel pagelanguage
-#>   <chr>           <chr>         <chr>     <chr>  <int> <chr>        <chr>       
-#> 1 Proposal:Elect… "\"electrici… 2022-03-… Rejec…  3000 wikitext     en          
-#> 2 Proposal:Motor… "\"tag motor… 2022-03-… Rejec…  3000 wikitext     en          
-#> 3 Proposal:Tramt… "\"Tramtrack… 2022-03-… Rejec…  3000 wikitext     en          
-#> 4 Proposal:Ameni… "Amenity=lou… 2024-10-… Rejec…  3000 wikitext     en          
-#> 5 Proposal:Aquat… "Aquatics ce… 2022-03-… Rejec…  3000 wikitext     en          
-#> 6 Proposal:3rd a… "3rd and 4th… 2022-07-… Appro…  3000 wikitext     en          
-#> # ℹ 17 more variables: pagelanguagehtmlcode <chr>, pagelanguagedir <chr>,
-#> #   touched <chr>, lastrevid <int>, length <int>, fullurl <chr>, editurl <chr>,
-#> #   canonicalurl <chr>, pageid <int>, `Page creator` <chr>,
-#> #   `Date of page creation` <dttm>, `Latest editor` <chr>,
-#> #   `Date of latest edit` <dttm>, `Total number of edits` <chr>,
-#> #   `Total number of distinct authors` <chr>,
-#> #   `Recent number of edits (within past 90 days)` <chr>, …
+#> # A tibble: 6 × 27
+#>   status   title                  sortkeyprefix timestamp           pagelanguage
+#>   <chr>    <chr>                  <chr>         <dttm>              <fct>       
+#> 1 Rejected Proposal:Electricity   "\"electrici… 2022-03-15 02:38:02 en          
+#> 2 Rejected Proposal:Motorcycle f… "\"tag motor… 2022-03-14 20:31:57 en          
+#> 3 Rejected Proposal:Tramtrack on… "\"Tramtrack… 2022-03-15 03:40:16 en          
+#> 4 Rejected Proposal:Amenity=loun… "Amenity=lou… 2024-10-30 16:40:54 en          
+#> 5 Rejected Proposal:Aquatics cen… "Aquatics ce… 2022-03-14 15:18:12 en          
+#> 6 Rejected Proposal:Artwork type… "artwork typ… 2022-03-15 22:24:41 en          
+#> # ℹ 22 more variables: touched <dttm>, length <int>, fullurl <chr>,
+#> #   editurl <chr>, pageid <int>, page_creator <fct>,
+#> #   date_of_page_creation <dttm>, latest_editor <fct>,
+#> #   date_of_latest_edit <dttm>, total_number_of_edits <dbl>,
+#> #   total_number_of_distinct_authors <dbl>, proposal_status <fct>,
+#> #   proposed_by <fct>, tagging <chr>, applies_to <fct>, definition <chr>,
+#> #   statistics <chr>, rendered_as <chr>, draft_started <date>, …
 
 colnames(proposals)
-#>  [1] "title"                                       
-#>  [2] "sortkeyprefix"                               
-#>  [3] "timestamp"                                   
-#>  [4] "status"                                      
-#>  [5] "ns"                                          
-#>  [6] "contentmodel"                                
-#>  [7] "pagelanguage"                                
-#>  [8] "pagelanguagehtmlcode"                        
-#>  [9] "pagelanguagedir"                             
-#> [10] "touched"                                     
-#> [11] "lastrevid"                                   
-#> [12] "length"                                      
-#> [13] "fullurl"                                     
-#> [14] "editurl"                                     
-#> [15] "canonicalurl"                                
-#> [16] "pageid"                                      
-#> [17] "Page creator"                                
-#> [18] "Date of page creation"                       
-#> [19] "Latest editor"                               
-#> [20] "Date of latest edit"                         
-#> [21] "Total number of edits"                       
-#> [22] "Total number of distinct authors"            
-#> [23] "Recent number of edits (within past 90 days)"
-#> [24] "Recent number of distinct authors"
+#>  [1] "status"                           "title"                           
+#>  [3] "sortkeyprefix"                    "timestamp"                       
+#>  [5] "pagelanguage"                     "touched"                         
+#>  [7] "length"                           "fullurl"                         
+#>  [9] "editurl"                          "pageid"                          
+#> [11] "page_creator"                     "date_of_page_creation"           
+#> [13] "latest_editor"                    "date_of_latest_edit"             
+#> [15] "total_number_of_edits"            "total_number_of_distinct_authors"
+#> [17] "proposal_status"                  "proposed_by"                     
+#> [19] "tagging"                          "applies_to"                      
+#> [21] "definition"                       "statistics"                      
+#> [23] "rendered_as"                      "draft_started"                   
+#> [25] "rfc_start"                        "vote_start"                      
+#> [27] "vote_end"
 
 # Check the dataset's metadata
 ?proposals

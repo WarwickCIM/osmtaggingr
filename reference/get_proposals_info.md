@@ -27,14 +27,14 @@ a dataframe with some stats
 
 ``` r
 proposals_info <- get_proposals_info('https://wiki.openstreetmap.org/wiki/Proposal:Electricity')
+#> 
+#> ── Retrieving proposals' information ───────────────────────────────────────────
 
 proposals_info
-#>                                                        url  Page creator
+#>                                                        url  page_creator
 #> 1 https://wiki.openstreetmap.org/wiki/Proposal:Electricity Privatemajory
-#>   Date of page creation Latest editor Date of latest edit Total number of edits
+#>   date_of_page_creation latest_editor date_of_latest_edit total_number_of_edits
 #> 1   2018-09-03 15:51:00  TigerfellBot 2023-04-30 15:12:00                   220
-#>   Total number of distinct authors Recent number of edits (within past 90 days)
-#> 1                               53                                            0
-#>   Recent number of distinct authors
-#> 1                                 0
+#>   total_number_of_distinct_authors
+#> 1                               53
 ```

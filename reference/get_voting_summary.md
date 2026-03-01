@@ -23,6 +23,8 @@ a dataframe with some stats
 
 ``` r
 voting_summary <- get_voting_summary('https://wiki.openstreetmap.org/wiki/Proposal:Electricity')
+#> 
+#> ── Retrieving proposals' voting summaries ──────────────────────────────────────
 
 voting_summary
 #>                                                        url     proposal_status

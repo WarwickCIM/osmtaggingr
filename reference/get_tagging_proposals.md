@@ -55,24 +55,39 @@ for a description of its metadata).
 
 ``` r
 proposals <- get_tagging_proposals("Proposed")
-#> Scraping proposals ■■■■■■■■■■■■■                     40% | ETA:  5s
-#> Scraping proposals ■■■■■■■■■■■■■■■■■■■               60% | ETA:  6s
-#> Scraping proposals ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  4s
-#> Scraping proposals ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
+#> 
+#> ── Retrieving proposals by status ──────────────────────────────────────────────
+#> Retrieving Proposed proposals
+#> ✔ Retrieved 5 proposals.
+#> 
+#> ── Retrieving proposals' details ───────────────────────────────────────────────
+#> ✔ Retrieved details to 5 proposals.
+#> 
+#> ── Retrieving proposals' information ───────────────────────────────────────────
+#> Webscrapping ■■■■■■■■■■■■■                     40% | ETA:  2s
+#> Webscrapping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
+#> 
+#> ── Retrieving proposals' voting summaries ──────────────────────────────────────
+#> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  1s
+#> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
+#> Error in dplyr::mutate(df, proposal_status = as.factor(proposal_status),     proposed_by = as.factor(proposed_by), applies_to = as.factor(applies_to),     draft_started = lubridate::ymd(draft_started), rfc_start = lubridate::ymd(rfc_start),     vote_start = lubridate::ymd(vote_start), vote_end = lubridate::ymd(vote_end)): ℹ In argument: `vote_start = lubridate::ymd(vote_start)`.
+#> Caused by error:
+#> ! object 'vote_start' not found
 head(proposals)
-#> # A tibble: 5 × 33
-#>   title           sortkeyprefix timestamp status    ns contentmodel pagelanguage
-#>   <chr>           <chr>         <chr>     <chr>  <int> <chr>        <chr>       
-#> 1 Proposal:3D ta… 3D tagging f… 2025-09-… Propo…  3000 wikitext     en          
-#> 2 Proposal:Note … :note suffix  2022-07-… Propo…  3000 wikitext     en          
-#> 3 Proposal:Acces… access_key    2024-10-… Propo…  3000 wikitext     en          
-#> 4 Proposal:Add l… Add language… 2024-11-… Propo…  3000 wikitext     en          
-#> 5 Proposal:Addr:… addr:interpo… 2022-03-… Propo…  3000 wikitext     en          
-#> # ℹ 26 more variables: pagelanguagehtmlcode <chr>, pagelanguagedir <chr>,
-#> #   touched <chr>, lastrevid <int>, length <int>, fullurl <chr>, editurl <chr>,
-#> #   canonicalurl <chr>, pageid <int>, `Page creator` <chr>,
-#> #   `Date of page creation` <dttm>, `Latest editor` <chr>,
-#> #   `Date of latest edit` <dttm>, `Total number of edits` <chr>,
-#> #   `Total number of distinct authors` <chr>,
-#> #   `Recent number of edits (within past 90 days)` <chr>, …
+#> # A tibble: 6 × 27
+#>   status   title                  sortkeyprefix timestamp           pagelanguage
+#>   <chr>    <chr>                  <chr>         <dttm>              <fct>       
+#> 1 Rejected Proposal:Electricity   "\"electrici… 2022-03-15 02:38:02 en          
+#> 2 Rejected Proposal:Motorcycle f… "\"tag motor… 2022-03-14 20:31:57 en          
+#> 3 Rejected Proposal:Tramtrack on… "\"Tramtrack… 2022-03-15 03:40:16 en          
+#> 4 Rejected Proposal:Amenity=loun… "Amenity=lou… 2024-10-30 16:40:54 en          
+#> 5 Rejected Proposal:Aquatics cen… "Aquatics ce… 2022-03-14 15:18:12 en          
+#> 6 Rejected Proposal:Artwork type… "artwork typ… 2022-03-15 22:24:41 en          
+#> # ℹ 22 more variables: touched <dttm>, length <int>, fullurl <chr>,
+#> #   editurl <chr>, pageid <int>, page_creator <fct>,
+#> #   date_of_page_creation <dttm>, latest_editor <fct>,
+#> #   date_of_latest_edit <dttm>, total_number_of_edits <dbl>,
+#> #   total_number_of_distinct_authors <dbl>, proposal_status <fct>,
+#> #   proposed_by <fct>, tagging <chr>, applies_to <fct>, definition <chr>,
+#> #   statistics <chr>, rendered_as <chr>, draft_started <date>, …
 ```
