@@ -6,6 +6,58 @@ library(osmtaggingr)
 
 proposals <- get_tagging_proposals(max_items = 1000)
 
+proposals2 <- proposals |>
+  dplyr::mutate(
+    applies_to_node = dplyr::case_when(
+      stringr::str_detect(tolower(applies_to), "node") ~ TRUE,
+      stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+    ),
+    applies_to_way = dplyr::case_when(
+      stringr::str_detect(tolower(applies_to), "way") ~ TRUE,
+      stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+    ),
+    applies_to_area = dplyr::case_when(
+      stringr::str_detect(tolower(applies_to), "area") ~ TRUE,
+      stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+    ),
+    applies_to_relation = dplyr::case_when(
+      stringr::str_detect(tolower(applies_to), "relation") ~ TRUE,
+      stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+    )
+  ) |>
+  dplyr::relocate()
+
+proposals <- proposals |>
+  dplyr::mutate(
+    applies_to_relation = dplyr::case_when(
+      stringr::str_detect(tolower(applies_to), "relation") ~ TRUE,
+      stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+    ),
+    .after = applies_to
+  ) |>
+  dplyr::mutate(
+    applies_to_area = dplyr::case_when(
+      stringr::str_detect(tolower(applies_to), "area") ~ TRUE,
+      stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+    ),
+    .after = applies_to
+  ) |>
+  dplyr::mutate(
+    applies_to_way = dplyr::case_when(
+      stringr::str_detect(tolower(applies_to), "way") ~ TRUE,
+      stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+    ),
+    .after = applies_to
+  ) |>
+  dplyr::mutate(
+    applies_to_node = dplyr::case_when(
+      stringr::str_detect(tolower(applies_to), "node") ~ TRUE,
+      stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+    ),
+    .after = applies_to
+  ) |>
+  dplyr::select(-applies_to)
+
 usethis::use_data(proposals, overwrite = TRUE)
 
 
