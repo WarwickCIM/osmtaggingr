@@ -1,5 +1,5 @@
 Package: osmtaggingr
-Title: OpenStreetMap's tagging datasets
+Title: OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging
 Version: 0.0.0.9000
 Authors@R: c(
     person(
