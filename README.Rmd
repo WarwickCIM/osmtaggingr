@@ -16,6 +16,9 @@ knitr::opts_chunk$set(
 # OpenStreetMap's tagging datasets
 
 <!-- badges: start -->
+
+[![DOI](https://zenodo.org/badge/1165670803.svg)](https://doi.org/10.5281/zenodo.18833755)
+
 <!-- badges: end -->
 
 The goal of `{osmtaggingr}` is to provide reproducible datasets containing information about [OpenStreetMap](http://openstreetmap.org)'s tagging proposals. It does so by querying and webscrapping OSM's wiki via helper functions. 

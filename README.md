@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![DOI](https://zenodo.org/badge/1165670803.svg)](https://doi.org/10.5281/zenodo.18833755)
+
 <!-- badges: end -->
 
 The goal of `{osmtaggingr}` is to provide reproducible datasets
