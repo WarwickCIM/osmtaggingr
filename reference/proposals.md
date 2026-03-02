@@ -1,8 +1,11 @@
 # OSM Tagging Proposals
 
-Metadata tagging proposals in [OSM
-Wiki](https://wiki.openstreetmap.org). This dataset has been created by
-the script `data-raw/tagging_proposals.R`.
+A data frame with 724 rows and 27 columns, containing all Approved,
+Rejected and Proposed tagging proposals from the [OSM
+Wiki](https://wiki.openstreetmap.org), as well as their associated
+metadata. This dataset has been created by the function
+[`get_tagging_proposals()`](https://warwickcim.github.io/osmtaggingr/reference/get_tagging_proposals.md)
+ran from the script `data-raw/tagging_proposals.R`.
 
 ## Usage
 
@@ -12,19 +15,116 @@ proposals
 
 ## Format
 
-A data frame with 12 rows and 24 columns:
+columns:
 
-- id:
+- status:
 
-  A unique identifier for every boundary
+  a factor describing the proposal status: Approved, Rejected or
+  Proposed.
 
-- service:
+- title:
 
-  URL pointing to the API service
+  a string with the wiki page containing the proposal
 
-- url_download:
+- sortkeyprefix:
 
-  URL querying the API service to return all features as a geojson file
+  a string
+
+- timestamp:
+
+  a date and time. Not sure what which refers to. DELETE?
+
+- pagelanguage:
+
+  a factor with the page's language. NOT WORKING, ALWAYS ENGLISH AND IT
+  IS NOT TRUE. FIND ALTERNATIVE WAYS OF RETRIEVING THIS
+
+- touched:
+
+  a timestamp when the page was last touched
+
+- length:
+
+  (integer) page's length, in bytes.
+
+- fullurl:
+
+  (string) URL pointing to the proposal's page.
+
+- editurl:
+
+  (string) the URL to edit the page.
+
+- pageid:
+
+  (int) the page's ID.
+
+- page_creator:
+
+  (factor) the username who created the page.
+
+- date_of_page_creation:
+
+  (date) the date and time in which the page was created.
+
+- latest_editor:
+
+  (factor) the username who last edited the page.
+
+- date_of_latest_edit:
+
+  (date) the date and time in which the page was last updated.
+
+- total_number_of_edits:
+
+  (integer) number of total times that the page has been edited.
+
+- total_number_of_disctinct_authors:
+
+  (integer) number of distinct users who have edited the page.
+
+- proposal_status:
+
+  (factor) status of a proposal.
+
+- proposed_by:
+
+  a string containing the name of the user(s) making the proposal.
+
+- tagging:
+
+  a string describing the proposed tagging scheme
+
+- applies_to:
+
+  a string describing which geospatial features can this feature be
+  applied to
+
+- definition:
+
+  a string containing a a short definition of what the tagging proposal
+  aims to describe.
+
+- rendered_as:
+
+  a string describing how the tagg is/should be rendered in the map (if
+  any).
+
+- draft_started:
+
+  date in which the proposal draft started.
+
+- rfc_start:
+
+  date in which Request For Comments (RFC) started.
+
+- vote_start:
+
+  date in which the voting process started.
+
+- vote_end:
+
+  date in which the voting process ended.
 
 ## Source
 

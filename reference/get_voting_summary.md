@@ -17,7 +17,34 @@ get_voting_summary(urls)
 
 ## Value
 
-a dataframe with some stats
+a dataframe with the following columns:
+
+- `url`: the URL of the tagging proposal.
+
+- `proposal_status`: the status of the proposal.
+
+- `proposed_by`: name of the user(s) making the proposal.
+
+- `tagging`: proposed tagging scheme.
+
+- `applies_to`: which geospatial features can this feature be applied
+  to.
+
+- `definition`: a short definition of what the tagging proposal aims to
+  describe.
+
+- `statistics`: usage statistics, from
+  [taginfo](https://taginfo.geofabrik.de/).
+
+- `rendered_as`: whether the feature has an icon or not.
+
+- `draft_started`: date in which the proposal draft started.
+
+- `rfc_start`: date in which Request For Comments (RFC) started.
+
+- `vote_start`: date in which the voting process started.
+
+- `vote_end`: date in which the voting process ended.
 
 ## Examples
 

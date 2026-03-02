@@ -8,7 +8,6 @@ API and provides basic metadata.
 ``` r
 get_tagging_proposals(
   statuses = c("Rejected", "Approved", "Proposed"),
-  details = TRUE,
   max_items = 5,
   info = TRUE,
   voting_summary = TRUE,
@@ -21,10 +20,6 @@ get_tagging_proposals(
 - statuses:
 
   a string or vector containing proposal's statuses to look for.
-
-- details:
-
-  boolean. Specifies whether to retrieve or not pages' details.
 
 - max_items:
 
@@ -68,22 +63,22 @@ proposals <- get_tagging_proposals("Proposed")
 #> Webscrapping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 #> 
 #> ── Retrieving proposals' voting summaries ──────────────────────────────────────
-#> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  1s
+#> Webscraping ■■■■■■■■■■■■■                     40% | ETA:  2s
 #> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
-#> Error in dplyr::mutate(df, proposal_status = as.factor(proposal_status),     proposed_by = as.factor(proposed_by), applies_to = as.factor(applies_to),     draft_started = lubridate::ymd(draft_started), rfc_start = lubridate::ymd(rfc_start),     vote_start = lubridate::ymd(vote_start), vote_end = lubridate::ymd(vote_end)): ℹ In argument: `vote_start = lubridate::ymd(vote_start)`.
-#> Caused by error:
-#> ! object 'vote_start' not found
+#> Warning: There was 1 warning in `dplyr::mutate()`.
+#> ℹ In argument: `dplyr::across(dplyr::any_of("rfc_start"), lubridate::ymd)`.
+#> Caused by warning:
+#> !  1 failed to parse.
 head(proposals)
-#> # A tibble: 6 × 27
+#> # A tibble: 5 × 25
 #>   status   title                  sortkeyprefix timestamp           pagelanguage
 #>   <chr>    <chr>                  <chr>         <dttm>              <fct>       
-#> 1 Rejected Proposal:Electricity   "\"electrici… 2022-03-15 02:38:02 en          
-#> 2 Rejected Proposal:Motorcycle f… "\"tag motor… 2022-03-14 20:31:57 en          
-#> 3 Rejected Proposal:Tramtrack on… "\"Tramtrack… 2022-03-15 03:40:16 en          
-#> 4 Rejected Proposal:Amenity=loun… "Amenity=lou… 2024-10-30 16:40:54 en          
-#> 5 Rejected Proposal:Aquatics cen… "Aquatics ce… 2022-03-14 15:18:12 en          
-#> 6 Rejected Proposal:Artwork type… "artwork typ… 2022-03-15 22:24:41 en          
-#> # ℹ 22 more variables: touched <dttm>, length <int>, fullurl <chr>,
+#> 1 Proposed Proposal:3D tagging f… 3D tagging f… 2025-09-06 17:57:58 en          
+#> 2 Proposed Proposal:Note suffix   :note suffix  2022-07-12 09:33:14 en          
+#> 3 Proposed Proposal:Access key    access_key    2024-10-15 12:03:14 en          
+#> 4 Proposed Proposal:Add language… Add language… 2024-11-13 09:49:37 en          
+#> 5 Proposed Proposal:Addr:interval addr:interpo… 2022-03-15 14:59:09 en          
+#> # ℹ 20 more variables: touched <dttm>, length <int>, fullurl <chr>,
 #> #   editurl <chr>, pageid <int>, page_creator <fct>,
 #> #   date_of_page_creation <dttm>, latest_editor <fct>,
 #> #   date_of_latest_edit <dttm>, total_number_of_edits <dbl>,
