@@ -78,6 +78,12 @@ get_proposals_votes <- function(urls) {
     cli::cli_progress_update()
     Sys.sleep(runif(1, min = 5, max = 30))
   }
+  votes_df <- votes_df |>
+    dplyr::mutate(
+      vote = as.factor(vote),
+      user = as.factor(user)
+    ) |>
+    tibble::as_tibble()
 
   cli::cli_progress_done()
   return(votes_df)
