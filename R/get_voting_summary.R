@@ -4,7 +4,19 @@
 #'
 #' @param urls a string containing the tagging proposal to retrieve details from.
 #'
-#' @returns a dataframe with some stats
+#' @returns a dataframe with the following columns:
+#' - `url`: the URL of the tagging proposal.
+#' - `proposal_status`: the status of the proposal.
+#' - `proposed_by`: name of the user(s) making the proposal.
+#' - `tagging`: proposed tagging scheme.
+#' - `applies_to`: which geospatial features can this feature be applied to.
+#' - `definition`: a short definition of what the tagging proposal aims to describe.
+#' - `statistics`: usage statistics, from [taginfo](https://taginfo.geofabrik.de/).
+#' - `rendered_as`: whether the feature has an icon or not.
+#' - `draft_started`: date in which the proposal draft started.
+#' - `rfc_start`: date in which Request For Comments (RFC) started.
+#' - `vote_start`: date in which the voting process started.
+#' - `vote_end`: date in which the voting process ended.
 #' @export
 #'
 #' @examples
@@ -81,13 +93,13 @@ get_voting_summary <- function(urls) {
 
   df <- df |>
     dplyr::mutate(
-      proposal_status = as.factor(proposal_status),
-      proposed_by = as.factor(proposed_by),
-      applies_to = as.factor(applies_to),
-      draft_started = lubridate::ymd(draft_started),
-      rfc_start = lubridate::ymd(rfc_start),
-      vote_start = lubridate::ymd(vote_start),
-      vote_end = lubridate::ymd(vote_end)
+      dplyr::across(dplyr::any_of("proposal_status"), as.factor),
+      dplyr::across(dplyr::any_of("proposed_by"), as.factor),
+      dplyr::across(dplyr::any_of("applies_to"), as.factor),
+      dplyr::across(dplyr::any_of("draft_started"), lubridate::ymd),
+      dplyr::across(dplyr::any_of("rfc_start"), lubridate::ymd),
+      dplyr::across(dplyr::any_of("vote_start"), lubridate::ymd),
+      dplyr::across(dplyr::any_of("vote_end"), lubridate::ymd)
     ) |>
     dplyr::select(dplyr::any_of(c(
       "url",
