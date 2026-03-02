@@ -3,7 +3,7 @@
 \docType{data}
 \name{proposals}
 \alias{proposals}
-\title{OSM Tagging Proposals}
+\title{OSM Tagging Proposals Data}
 \format{
 columns:
 \describe{

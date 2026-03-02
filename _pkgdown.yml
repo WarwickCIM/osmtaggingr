@@ -7,6 +7,7 @@ reference:
       Datasets provided by this package
     contents: 
     - proposals
+    - proposals_votes
   - title: "Data retrieval"
     desc: "Functions used to retrieve data"
     contents:
