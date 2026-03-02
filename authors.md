@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/WarwickCIM/osmtaggingr/blob/0.0.0.9000/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/WarwickCIM/osmtaggingr/blob/main/DESCRIPTION)
 
 Cámara-Menoyo C, Monteath T (2026). *osmtaggingr: OpenStreetMap's
 tagging datasets*. R package version 0.0.0.9000,
