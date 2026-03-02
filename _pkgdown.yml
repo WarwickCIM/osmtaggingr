@@ -1,4 +1,14 @@
 url: https://warwickcim.github.io/osmtaggingr/
 template:
   bootstrap: 5
+reference:
+  - title: "Datasets"
+    desc: >
+      Datasets provided by this package
+    contents: 
+    - proposals
+  - title: "Data retrieval"
+    desc: "Functions used to retrieve data"
+    contents:
+    - starts_with("get")
 

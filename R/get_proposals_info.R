@@ -5,7 +5,14 @@
 #' @param urls a string containing the tagging proposal to retrieve details from.
 #' @param verbose a boolean to print the URL in the console.
 #'
-#' @returns a dataframe with some stats
+#' @returns a dataframe with the following columns:
+#' - `url`: the URL of the tagging proposal.
+#' - `page_creator`: the username who created the page.
+#' - `date_of_page_creation`: the date in which the page was created.
+#' - `latest_editor`: the username who last edited the page.
+#' - `date_of_latest_edit`: date in which the page was last updated.
+#' - `total_number_of_edits`: number of total times that the page has been edited.
+#' - `total_number_of_disctinct_authors`: number of distinct users who have edited the page.
 #' @export
 #'
 #' @examples

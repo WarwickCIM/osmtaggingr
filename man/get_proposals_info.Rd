@@ -12,7 +12,16 @@ get_proposals_info(urls, verbose = FALSE)
 \item{verbose}{a boolean to print the URL in the console.}
 }
 \value{
-a dataframe with some stats
+a dataframe with the following columns:
+\itemize{
+\item \code{url}: the URL of the tagging proposal.
+\item \code{page_creator}: the username who created the page.
+\item \code{date_of_page_creation}: the date in which the page was created.
+\item \code{latest_editor}: the username who last edited the page.
+\item \code{date_of_latest_edit}: date in which the page was last updated.
+\item \code{total_number_of_edits}: number of total times that the page has been edited.
+\item \code{total_number_of_disctinct_authors}: number of distinct users who have edited the page.
+}
 }
 \description{
 Given a vector of urls, scrapes the tagging proposals to retrieve statistics and stores them into a dataframe.

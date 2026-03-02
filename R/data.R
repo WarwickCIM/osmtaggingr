@@ -1,17 +1,42 @@
 #' OSM Tagging Proposals
 #'
-#' Metadata tagging proposals in [OSM Wiki](https://wiki.openstreetmap.org).
-#' This dataset has been created by the script `data-raw/tagging_proposals.R`.
+#' A data frame with `r nrow(proposals)` rows and `r ncol(proposals)` columns, containing all
+#' Approved, Rejected and Proposed tagging proposals from the [OSM Wiki](https://wiki.openstreetmap.org), as well as their associated metadata.
+#' This dataset has been created by the function `get_tagging_proposals()`
+#' ran from the script `data-raw/tagging_proposals.R`.
 #'
 #' This documentation is not yet complete: lacks all the final fields from the dataset.
 #'
 #' @format
-#' A data frame with `r nrow(proposals)` rows and `r ncol(proposals)`
+#'
 #' columns:
 #' \describe{
-#'   \item{id}{A unique identifier for every boundary}
-#'   \item{service}{URL pointing to the API service}
-#'   \item{url_download}{URL querying the API service to return all features as a geojson file}
+#'   \item{status}{a factor describing the proposal status: Approved, Rejected or Proposed.}
+#'   \item{title}{a string with the wiki page containing the proposal}
+#'   \item{sortkeyprefix}{a string}
+#'   \item{timestamp}{a date and time. Not sure what which refers to. DELETE?}
+#'   \item{pagelanguage}{a factor with the page's language. NOT WORKING, ALWAYS ENGLISH AND IT IS NOT TRUE. FIND ALTERNATIVE WAYS OF RETRIEVING THIS}
+#'   \item{touched}{a timestamp when the page was last touched}
+#'   \item{length}{(integer) page's length, in bytes.}
+#'   \item{fullurl}{(string) URL pointing to the proposal's page.}
+#'   \item{editurl}{(string) the URL to edit the page.}
+#'   \item{pageid}{(int) the page's ID.}
+#'   \item{page_creator}{(factor) the username who created the page.}
+#'   \item{date_of_page_creation}{(date) the date and time in which the page was created.}
+#'   \item{latest_editor}{(factor) the username who last edited the page.}
+#'   \item{date_of_latest_edit}{(date) the date and time in which the page was last updated.}
+#'   \item{total_number_of_edits}{(integer) number of total times that the page has been edited.}
+#'   \item{total_number_of_disctinct_authors}{(integer) number of distinct users who have edited the page.}
+#'   \item{proposal_status}{(factor) status of a proposal.}
+#'   \item{proposed_by}{a string containing the name of the user(s) making the proposal.}
+#'   \item{tagging}{a string describing the proposed tagging scheme}
+#'   \item{applies_to}{a string describing which geospatial features can this feature be applied to}
+#'   \item{definition}{a string containing a a short definition of what the tagging proposal aims to describe.}
+#'   \item{rendered_as}{a string describing how the tagg is/should be rendered in the map (if any).}
+#'   \item{draft_started}{date in which the proposal draft started.}
+#'   \item{rfc_start}{date in which Request For Comments (RFC) started.}
+#'   \item{vote_start}{date in which the voting process started.}
+#'   \item{vote_end}{date in which the voting process ended.}
 #'
 #' }
 #'

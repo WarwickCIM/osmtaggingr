@@ -3,7 +3,6 @@
 #' Retrieves all tagging proposals in OSM's wiki by querying mediawiki's API and provides basic metadata.
 #'
 #' @param statuses a string or vector containing proposal's statuses to look for.
-#' @param details boolean. Specifies whether to retrieve or not pages' details.
 #' @param max_items a integer specifiying the the maximum number of members to retrieve for each category. Set to 5 by default.
 #' @param info a boolean. Specifies whether to retrieve or not proposals' stats. Set TRUE by default.
 #' @param voting_summary a boolean. Specifies whether to retrieve or not proposals' voting summary. Set TRUE by default.

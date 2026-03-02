@@ -10,7 +10,21 @@ get_voting_summary(urls)
 \item{urls}{a string containing the tagging proposal to retrieve details from.}
 }
 \value{
-a dataframe with some stats
+a dataframe with the following columns:
+\itemize{
+\item \code{url}: the URL of the tagging proposal.
+\item \code{proposal_status}: the status of the proposal.
+\item \code{proposed_by}: name of the user(s) making the proposal.
+\item \code{tagging}: proposed tagging scheme.
+\item \code{applies_to}: which geospatial features can this feature be applied to.
+\item \code{definition}: a short definition of what the tagging proposal aims to describe.
+\item \code{statistics}: usage statistics, from \href{https://taginfo.geofabrik.de/}{taginfo}.
+\item \code{rendered_as}: whether the feature has an icon or not.
+\item \code{draft_started}: date in which the proposal draft started.
+\item \code{rfc_start}: date in which Request For Comments (RFC) started.
+\item \code{vote_start}: date in which the voting process started.
+\item \code{vote_end}: date in which the voting process ended.
+}
 }
 \description{
 Given a vector of urls, scrapes the tagging proposals to retrieve voting history data.

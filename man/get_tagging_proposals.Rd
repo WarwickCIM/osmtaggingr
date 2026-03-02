@@ -6,7 +6,6 @@
 \usage{
 get_tagging_proposals(
   statuses = c("Rejected", "Approved", "Proposed"),
-  details = TRUE,
   max_items = 5,
   info = TRUE,
   voting_summary = TRUE,
@@ -15,8 +14,6 @@ get_tagging_proposals(
 }
 \arguments{
 \item{statuses}{a string or vector containing proposal's statuses to look for.}
-
-\item{details}{boolean. Specifies whether to retrieve or not pages' details.}
 
 \item{max_items}{a integer specifiying the the maximum number of members to retrieve for each category. Set to 5 by default.}
 
