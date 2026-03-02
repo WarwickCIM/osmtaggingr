@@ -1,4 +1,4 @@
-# OSM Tagging Proposals
+# OSM Tagging Proposals Data
 
 A data frame with 724 rows and 27 columns, containing all Approved,
 Rejected and Proposed tagging proposals from the [OSM

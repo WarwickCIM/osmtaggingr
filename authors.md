@@ -13,12 +13,12 @@
 Source:
 [`DESCRIPTION`](https://github.com/WarwickCIM/osmtaggingr/blob/main/DESCRIPTION)
 
-Cámara-Menoyo C, Monteath T (2026). *osmtaggingr: OpenStreetMap's
-tagging datasets*. R package version 0.0.0.9000,
-<https://github.com/WarwickCIM/osmtaggingr>.
+Cámara-Menoyo C, Monteath T (2026). *osmtaggingr: OSMtaggingR:
+Reproducible Datasets about OpenStreetMap's tagging*. R package version
+0.0.0.9000, <https://github.com/WarwickCIM/osmtaggingr>.
 
     @Manual{,
-      title = {osmtaggingr: OpenStreetMap's tagging datasets},
+      title = {osmtaggingr: OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging},
       author = {Carlos Cámara-Menoyo and Timothy Monteath},
       year = {2026},
       note = {R package version 0.0.0.9000},
