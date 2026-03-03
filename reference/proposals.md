@@ -1,6 +1,6 @@
 # OSM Tagging Proposals Data
 
-A data frame with 724 rows and 27 columns, containing all Approved,
+A data frame with 724 rows and 30 columns, containing all Approved,
 Rejected and Proposed tagging proposals from the [OSM
 Wiki](https://wiki.openstreetmap.org), as well as their associated
 metadata. This dataset has been created by the function
@@ -95,10 +95,21 @@ columns:
 
   a string describing the proposed tagging scheme
 
-- applies_to:
+- applies_to_node:
 
-  a string describing which geospatial features can this feature be
-  applied to
+  (Boolean) whether this tag applies to nodes or not.
+
+- applies_to_way:
+
+  (Boolean) whether this tag applies to ways or not.
+
+- applies_to_area:
+
+  (Boolean) whether this tag applies to areas or not.
+
+- applies_to_relation:
+
+  (Boolean) whether this tag applies to relations or not.
 
 - definition:
 

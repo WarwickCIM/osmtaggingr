@@ -27,8 +27,14 @@ a dataframe with the following columns:
 
 - `tagging`: proposed tagging scheme.
 
-- `applies_to`: which geospatial features can this feature be applied
-  to.
+- `applies_to_node`: (Boolean) whether this tag applies to nodes or not.
+
+- `applies_to_way`: (Boolean) whether this tag applies to ways or not.
+
+- `applies_to_area`: (Boolean) whether this tag applies to areas or not.
+
+- `applies_to_relation`: (Boolean) whether this tag applies to relations
+  or not.
 
 - `definition`: a short definition of what the tagging proposal aims to
   describe.
@@ -56,8 +62,10 @@ voting_summary <- get_voting_summary('https://wiki.openstreetmap.org/wiki/Propos
 voting_summary
 #>                                                        url     proposal_status
 #> 1 https://wiki.openstreetmap.org/wiki/Proposal:Electricity Rejected (inactive)
-#>           proposed_by                           tagging applies_to
-#> 1 Privatemajory, Luke electricity=yes, no, intermittent        , ,
+#>           proposed_by                           tagging applies_to_node
+#> 1 Privatemajory, Luke electricity=yes, no, intermittent              NA
+#>   applies_to_way applies_to_area applies_to_relation
+#> 1             NA              NA                  NA
 #>                                                              definition
 #> 1 Indicate the electricity source used in a public building or amenity.
 #>   statistics  rendered_as draft_started  rfc_start vote_start   vote_end

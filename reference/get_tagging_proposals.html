@@ -92,14 +92,14 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Webscrapping <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span> 100% | ETA:  0s</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Retrieving proposals' voting summaries</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Webscraping <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span>  80% | ETA:  1s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Webscraping <span style="color: #00BB00;">■■■■■■■■■■■■■                   </span>  40% | ETA:  2s</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Webscraping <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span> 100% | ETA:  0s</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>There was 1 warning in `dplyr::mutate()`.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> In argument: `dplyr::across(dplyr::any_of("rfc_start"), lubridate::ymd)`.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Caused by warning:</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span>  1 failed to parse.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">proposals</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 25</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 28</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   status   title                  sortkeyprefix timestamp           pagelanguage</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Proposed Proposal:3D tagging f… 3D tagging f… 2025-09-06 <span style="color: #949494;">17:57:58</span> en          </span>
@@ -107,13 +107,13 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Proposed Proposal:Access key    access_key    2024-10-15 <span style="color: #949494;">12:03:14</span> en          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Proposed Proposal:Add language… Add language… 2024-11-13 <span style="color: #949494;">09:49:37</span> en          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Proposed Proposal:Addr:interval addr:interpo… 2022-03-15 <span style="color: #949494;">14:59:09</span> en          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 20 more variables: touched &lt;dttm&gt;, length &lt;int&gt;, fullurl &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 23 more variables: touched &lt;dttm&gt;, length &lt;int&gt;, fullurl &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   editurl &lt;chr&gt;, pageid &lt;int&gt;, page_creator &lt;fct&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   date_of_page_creation &lt;dttm&gt;, latest_editor &lt;fct&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   date_of_latest_edit &lt;dttm&gt;, total_number_of_edits &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   total_number_of_distinct_authors &lt;dbl&gt;, proposal_status &lt;fct&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   proposed_by &lt;fct&gt;, tagging &lt;chr&gt;, applies_to &lt;fct&gt;, definition &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   statistics &lt;chr&gt;, rendered_as &lt;chr&gt;, draft_started &lt;date&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   proposed_by &lt;fct&gt;, tagging &lt;chr&gt;, applies_to_node &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   applies_to_way &lt;lgl&gt;, applies_to_area &lt;lgl&gt;, applies_to_relation &lt;lgl&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

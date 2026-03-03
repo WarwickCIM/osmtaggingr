@@ -63,14 +63,14 @@ proposals <- get_tagging_proposals("Proposed")
 #> Webscrapping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 #> 
 #> ── Retrieving proposals' voting summaries ──────────────────────────────────────
-#> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  1s
+#> Webscraping ■■■■■■■■■■■■■                     40% | ETA:  2s
 #> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 #> Warning: There was 1 warning in `dplyr::mutate()`.
 #> ℹ In argument: `dplyr::across(dplyr::any_of("rfc_start"), lubridate::ymd)`.
 #> Caused by warning:
 #> !  1 failed to parse.
 head(proposals)
-#> # A tibble: 5 × 25
+#> # A tibble: 5 × 28
 #>   status   title                  sortkeyprefix timestamp           pagelanguage
 #>   <chr>    <chr>                  <chr>         <dttm>              <fct>       
 #> 1 Proposed Proposal:3D tagging f… 3D tagging f… 2025-09-06 17:57:58 en          
@@ -78,11 +78,11 @@ head(proposals)
 #> 3 Proposed Proposal:Access key    access_key    2024-10-15 12:03:14 en          
 #> 4 Proposed Proposal:Add language… Add language… 2024-11-13 09:49:37 en          
 #> 5 Proposed Proposal:Addr:interval addr:interpo… 2022-03-15 14:59:09 en          
-#> # ℹ 20 more variables: touched <dttm>, length <int>, fullurl <chr>,
+#> # ℹ 23 more variables: touched <dttm>, length <int>, fullurl <chr>,
 #> #   editurl <chr>, pageid <int>, page_creator <fct>,
 #> #   date_of_page_creation <dttm>, latest_editor <fct>,
 #> #   date_of_latest_edit <dttm>, total_number_of_edits <dbl>,
 #> #   total_number_of_distinct_authors <dbl>, proposal_status <fct>,
-#> #   proposed_by <fct>, tagging <chr>, applies_to <fct>, definition <chr>,
-#> #   statistics <chr>, rendered_as <chr>, draft_started <date>, …
+#> #   proposed_by <fct>, tagging <chr>, applies_to_node <lgl>,
+#> #   applies_to_way <lgl>, applies_to_area <lgl>, applies_to_relation <lgl>, …
 ```

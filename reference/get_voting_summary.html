@@ -55,7 +55,10 @@
 <li><p><code>proposal_status</code>: the status of the proposal.</p></li>
 <li><p><code>proposed_by</code>: name of the user(s) making the proposal.</p></li>
 <li><p><code>tagging</code>: proposed tagging scheme.</p></li>
-<li><p><code>applies_to</code>: which geospatial features can this feature be applied to.</p></li>
+<li><p><code>applies_to_node</code>: (Boolean) whether this tag applies to nodes or not.</p></li>
+<li><p><code>applies_to_way</code>: (Boolean) whether this tag applies to ways or not.</p></li>
+<li><p><code>applies_to_area</code>: (Boolean) whether this tag applies to areas or not.</p></li>
+<li><p><code>applies_to_relation</code>: (Boolean) whether this tag applies to relations or not.</p></li>
 <li><p><code>definition</code>: a short definition of what the tagging proposal aims to describe.</p></li>
 <li><p><code>statistics</code>: usage statistics, from <a href="https://taginfo.geofabrik.de/" class="external-link">taginfo</a>.</p></li>
 <li><p><code>rendered_as</code>: whether the feature has an icon or not.</p></li>
@@ -74,8 +77,10 @@
 <span class="r-in"><span><span class="va">voting_summary</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                        url     proposal_status</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://wiki.openstreetmap.org/wiki/Proposal:Electricity Rejected (inactive)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           proposed_by                           tagging applies_to</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Privatemajory, Luke electricity=yes, no, intermittent        , ,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           proposed_by                           tagging applies_to_node</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Privatemajory, Luke electricity=yes, no, intermittent              NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   applies_to_way applies_to_area applies_to_relation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             NA              NA                  NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                              definition</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 Indicate the electricity source used in a public building or amenity.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   statistics  rendered_as draft_started  rfc_start vote_start   vote_end</span>
