@@ -6,6 +6,21 @@ library(osmtaggingr)
 
 proposals <- get_tagging_proposals(max_items = 1000)
 
+proposals_inactive <- get_tagging_proposals(
+  statuses = c(
+    "Draft",
+    "Voting",
+    "Abandoned",
+    "Canceled",
+    "Obsoleted",
+    "Inactive"
+  ),
+  max_items = 1000
+)
+
+proposals <- proposals |>
+  dplyr::bind_rows(proposals_inactive)
+
 usethis::use_data(proposals, overwrite = TRUE)
 
 
