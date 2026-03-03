@@ -26,7 +26,10 @@ columns:
 \item{proposal_status}{(factor) status of a proposal.}
 \item{proposed_by}{a string containing the name of the user(s) making the proposal.}
 \item{tagging}{a string describing the proposed tagging scheme}
-\item{applies_to}{a string describing which geospatial features can this feature be applied to}
+\item{applies_to_node}{(Boolean) whether this tag applies to nodes or not.}
+\item{applies_to_way}{(Boolean) whether this tag applies to ways or not.}
+\item{applies_to_area}{(Boolean) whether this tag applies to areas or not.}
+\item{applies_to_relation}{(Boolean) whether this tag applies to relations or not.}
 \item{definition}{a string containing a a short definition of what the tagging proposal aims to describe.}
 \item{rendered_as}{a string describing how the tagg is/should be rendered in the map (if any).}
 \item{draft_started}{date in which the proposal draft started.}
@@ -43,7 +46,7 @@ columns:
 proposals
 }
 \description{
-A data frame with 724 rows and 27 columns, containing all
+A data frame with 724 rows and 30 columns, containing all
 Approved, Rejected and Proposed tagging proposals from the \href{https://wiki.openstreetmap.org}{OSM Wiki}, as well as their associated metadata.
 This dataset has been created by the function \code{get_tagging_proposals()}
 ran from the script \code{data-raw/tagging_proposals.R}.
