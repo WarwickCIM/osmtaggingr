@@ -16,7 +16,10 @@ a dataframe with the following columns:
 \item \code{proposal_status}: the status of the proposal.
 \item \code{proposed_by}: name of the user(s) making the proposal.
 \item \code{tagging}: proposed tagging scheme.
-\item \code{applies_to}: which geospatial features can this feature be applied to.
+\item \code{applies_to_node}: (Boolean) whether this tag applies to nodes or not.
+\item \code{applies_to_way}: (Boolean) whether this tag applies to ways or not.
+\item \code{applies_to_area}: (Boolean) whether this tag applies to areas or not.
+\item \code{applies_to_relation}: (Boolean) whether this tag applies to relations or not.
 \item \code{definition}: a short definition of what the tagging proposal aims to describe.
 \item \code{statistics}: usage statistics, from \href{https://taginfo.geofabrik.de/}{taginfo}.
 \item \code{rendered_as}: whether the feature has an icon or not.

@@ -9,7 +9,10 @@
 #' - `proposal_status`: the status of the proposal.
 #' - `proposed_by`: name of the user(s) making the proposal.
 #' - `tagging`: proposed tagging scheme.
-#' - `applies_to`: which geospatial features can this feature be applied to.
+#' - `applies_to_node`: (Boolean) whether this tag applies to nodes or not.
+#' - `applies_to_way`: (Boolean) whether this tag applies to ways or not.
+#' - `applies_to_area`: (Boolean) whether this tag applies to areas or not.
+#' - `applies_to_relation`: (Boolean) whether this tag applies to relations or not.
 #' - `definition`: a short definition of what the tagging proposal aims to describe.
 #' - `statistics`: usage statistics, from [taginfo](https://taginfo.geofabrik.de/).
 #' - `rendered_as`: whether the feature has an icon or not.
@@ -93,9 +96,36 @@ get_voting_summary <- function(urls) {
 
   df <- df |>
     dplyr::mutate(
+      applies_to_relation = dplyr::case_when(
+        stringr::str_detect(tolower(applies_to), "relation") ~ TRUE,
+        stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+      ),
+      .after = applies_to
+    ) |>
+    dplyr::mutate(
+      applies_to_area = dplyr::case_when(
+        stringr::str_detect(tolower(applies_to), "area") ~ TRUE,
+        stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+      ),
+      .after = applies_to
+    ) |>
+    dplyr::mutate(
+      applies_to_way = dplyr::case_when(
+        stringr::str_detect(tolower(applies_to), "way") ~ TRUE,
+        stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+      ),
+      .after = applies_to
+    ) |>
+    dplyr::mutate(
+      applies_to_node = dplyr::case_when(
+        stringr::str_detect(tolower(applies_to), "node") ~ TRUE,
+        stringr::str_detect(tolower(applies_to), "all") ~ TRUE,
+      ),
+      .after = applies_to
+    ) |>
+    dplyr::mutate(
       dplyr::across(dplyr::any_of("proposal_status"), as.factor),
       dplyr::across(dplyr::any_of("proposed_by"), as.factor),
-      dplyr::across(dplyr::any_of("applies_to"), as.factor),
       dplyr::across(dplyr::any_of("draft_started"), lubridate::ymd),
       dplyr::across(dplyr::any_of("rfc_start"), lubridate::ymd),
       dplyr::across(dplyr::any_of("vote_start"), lubridate::ymd),
@@ -106,7 +136,10 @@ get_voting_summary <- function(urls) {
       "proposal_status",
       "proposed_by",
       "tagging",
-      "applies_to",
+      "applies_to_node",
+      "applies_to_way",
+      "applies_to_area",
+      "applies_to_relation",
       "definition",
       "statistics",
       "rendered_as",
