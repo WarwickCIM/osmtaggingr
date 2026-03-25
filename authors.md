@@ -5,7 +5,7 @@
 - **Carlos Cámara-Menoyo**. Author, maintainer.
   [](https://orcid.org/0000-0002-9378-0549)
 
-- **Timothy Monteath**. Author.
+- **Timothy Monteath**. Contributor.
   [](https://orcid.org/0000-0003-2481-9785)
 
 ## Citation
@@ -13,13 +13,13 @@
 Source:
 [`DESCRIPTION`](https://github.com/WarwickCIM/osmtaggingr/blob/main/DESCRIPTION)
 
-Cámara-Menoyo C, Monteath T (2026). *osmtaggingr: OSMtaggingR:
-Reproducible Datasets about OpenStreetMap's tagging*. R package version
-0.0.0.9000, <https://github.com/WarwickCIM/osmtaggingr>.
+Cámara-Menoyo C (2026). *osmtaggingr: OSMtaggingR: Reproducible Datasets
+about OpenStreetMap's tagging*. R package version 0.0.0.9000,
+<https://github.com/WarwickCIM/osmtaggingr>.
 
     @Manual{,
       title = {osmtaggingr: OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging},
-      author = {Carlos Cámara-Menoyo and Timothy Monteath},
+      author = {Carlos Cámara-Menoyo},
       year = {2026},
       note = {R package version 0.0.0.9000},
       url = {https://github.com/WarwickCIM/osmtaggingr},

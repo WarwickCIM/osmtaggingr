@@ -8,7 +8,7 @@ so by querying and webscrapping OSM’s wiki via helper functions.
 The package contains the following datasets, as well as associated
 metadata and functions to recreate them:
 
-1.  `proposals`: A data frame with 724 rows and 27 columns, containing
+1.  `proposals`: A data frame with 2115 rows and 30 columns, containing
     all Approved, Rejected and Proposed tagging proposals from the [OSM
     Wiki](https://wiki.openstreetmap.org), as well as their associated
     metadata (run
@@ -43,10 +43,11 @@ If you use this package in your work, please cite it as below:
 ``` bibtex
 @Manual{,
   title = {OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging},
-  author = {Carlos Cámara-Menoyo and Timothy Monteath},
+  author = {{C{\'a}mara-Menoyo}, Carlos},,
   year = {2026},
   note = {R package version 0.0.0.9000},
   url = {https://github.com/WarwickCIM/OSMtaggingR},
+  collaborator = {Monteath, Timothy}
 }
 ```
 
@@ -76,7 +77,7 @@ proposals <- tibble::as_tibble(proposals)
 
 # Explore the dataset.
 head(proposals)
-#> # A tibble: 6 × 27
+#> # A tibble: 6 × 30
 #>   status   title                  sortkeyprefix timestamp           pagelanguage
 #>   <chr>    <chr>                  <chr>         <dttm>              <fct>       
 #> 1 Rejected Proposal:Electricity   "\"electrici… 2022-03-15 02:38:02 en          
@@ -85,13 +86,13 @@ head(proposals)
 #> 4 Rejected Proposal:Amenity=loun… "Amenity=lou… 2024-10-30 16:40:54 en          
 #> 5 Rejected Proposal:Aquatics cen… "Aquatics ce… 2022-03-14 15:18:12 en          
 #> 6 Rejected Proposal:Artwork type… "artwork typ… 2022-03-15 22:24:41 en          
-#> # ℹ 22 more variables: touched <dttm>, length <int>, fullurl <chr>,
+#> # ℹ 25 more variables: touched <dttm>, length <int>, fullurl <chr>,
 #> #   editurl <chr>, pageid <int>, page_creator <fct>,
 #> #   date_of_page_creation <dttm>, latest_editor <fct>,
 #> #   date_of_latest_edit <dttm>, total_number_of_edits <dbl>,
 #> #   total_number_of_distinct_authors <dbl>, proposal_status <fct>,
-#> #   proposed_by <fct>, tagging <chr>, applies_to <fct>, definition <chr>,
-#> #   statistics <chr>, rendered_as <chr>, draft_started <date>, …
+#> #   proposed_by <fct>, tagging <chr>, applies_to_node <lgl>,
+#> #   applies_to_way <lgl>, applies_to_area <lgl>, applies_to_relation <lgl>, …
 
 colnames(proposals)
 #>  [1] "status"                           "title"                           
@@ -103,11 +104,12 @@ colnames(proposals)
 #> [13] "latest_editor"                    "date_of_latest_edit"             
 #> [15] "total_number_of_edits"            "total_number_of_distinct_authors"
 #> [17] "proposal_status"                  "proposed_by"                     
-#> [19] "tagging"                          "applies_to"                      
-#> [21] "definition"                       "statistics"                      
-#> [23] "rendered_as"                      "draft_started"                   
-#> [25] "rfc_start"                        "vote_start"                      
-#> [27] "vote_end"
+#> [19] "tagging"                          "applies_to_node"                 
+#> [21] "applies_to_way"                   "applies_to_area"                 
+#> [23] "applies_to_relation"              "definition"                      
+#> [25] "statistics"                       "rendered_as"                     
+#> [27] "draft_started"                    "rfc_start"                       
+#> [29] "vote_start"                       "vote_end"
 
 # Check the dataset's metadata
 ?proposals

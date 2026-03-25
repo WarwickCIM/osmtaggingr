@@ -63,8 +63,6 @@ proposals <- get_tagging_proposals("Proposed")
 #> Webscrapping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 #> 
 #> ── Retrieving proposals' voting summaries ──────────────────────────────────────
-#> Webscraping ■■■■■■■■■■■■■                     40% | ETA:  2s
-#> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 #> Warning: There was 1 warning in `dplyr::mutate()`.
 #> ℹ In argument: `dplyr::across(dplyr::any_of("rfc_start"), lubridate::ymd)`.
 #> Caused by warning:
