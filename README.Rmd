@@ -47,10 +47,11 @@ If you use this package in your work, please cite it as below:
 ```bibtex
 @Manual{,
   title = {OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging},
-  author = {Carlos Cámara-Menoyo and Timothy Monteath},
+  author = {{C{\'a}mara-Menoyo}, Carlos},,
   year = {2026},
   note = {R package version 0.0.0.9000},
   url = {https://github.com/WarwickCIM/OSMtaggingR},
+  collaborator = {Monteath, Timothy}
 }
 ```
 
