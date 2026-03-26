@@ -19,7 +19,20 @@ proposals_inactive <- get_tagging_proposals(
 )
 
 proposals <- proposals |>
-  dplyr::bind_rows(proposals_inactive)
+  dplyr::bind_rows(proposals_inactive) |>
+  dplyr::mutate(
+    status = forcats::fct_relevel(
+      as.factor(status),
+      "Approved",
+      "Rejected",
+      "Voting",
+      "Proposed",
+      "Draft",
+      "Abandoned",
+      "Canceled",
+      "Obsoleted"
+    )
+  )
 
 usethis::use_data(proposals, overwrite = TRUE)
 

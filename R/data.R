@@ -11,7 +11,7 @@
 #'
 #' columns:
 #' \describe{
-#'   \item{status}{a factor describing the proposal status: Approved, Rejected or Proposed.}
+#'   \item{status}{a factor describing the proposal status: `r levels(proposals$status)`}
 #'   \item{title}{a string with the wiki page containing the proposal}
 #'   \item{sortkeyprefix}{a string}
 #'   \item{timestamp}{a date and time. Not sure what which refers to. DELETE?}

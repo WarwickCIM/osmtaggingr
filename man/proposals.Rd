@@ -7,7 +7,7 @@
 \format{
 columns:
 \describe{
-\item{status}{a factor describing the proposal status: Approved, Rejected or Proposed.}
+\item{status}{a factor describing the proposal status: Approved, Rejected, Voting, Proposed, Draft, Abandoned, Canceled, Obsoleted, Inactive}
 \item{title}{a string with the wiki page containing the proposal}
 \item{sortkeyprefix}{a string}
 \item{timestamp}{a date and time. Not sure what which refers to. DELETE?}
@@ -46,7 +46,7 @@ columns:
 proposals
 }
 \description{
-A data frame with 724 rows and 30 columns, containing all
+A data frame with 2115 rows and 30 columns, containing all
 Approved, Rejected and Proposed tagging proposals from the \href{https://wiki.openstreetmap.org}{OSM Wiki}, as well as their associated metadata.
 This dataset has been created by the function \code{get_tagging_proposals()}
 ran from the script \code{data-raw/tagging_proposals.R}.
