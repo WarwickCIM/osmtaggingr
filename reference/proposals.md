@@ -1,6 +1,6 @@
 # OSM Tagging Proposals Data
 
-A data frame with 724 rows and 30 columns, containing all Approved,
+A data frame with 2115 rows and 30 columns, containing all Approved,
 Rejected and Proposed tagging proposals from the [OSM
 Wiki](https://wiki.openstreetmap.org), as well as their associated
 metadata. This dataset has been created by the function
@@ -19,8 +19,8 @@ columns:
 
 - status:
 
-  a factor describing the proposal status: Approved, Rejected or
-  Proposed.
+  a factor describing the proposal status: Approved, Rejected, Voting,
+  Proposed, Draft, Abandoned, Canceled, Obsoleted, Inactive
 
 - title:
 
